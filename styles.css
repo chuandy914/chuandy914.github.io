@@ -1,1 +1,27 @@
-PLACEHOLDER_STYLES
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body {
+  margin: 0 auto;
+  max-width: 40rem;
+  padding: 2.5rem 1.25rem 4rem;
+  font: 18px/1.5 ui-sans-serif, system-ui, sans-serif;
+  background: #111;
+  color: #eee;
+}
+.brand { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.75rem; color: #aaa; }
+.honest { color: #c9b27c; font-size: 0.95rem; }
+h1 { font-size: 2rem; line-height: 1.2; margin: 1.5rem 0 1rem; }
+h2 { font-size: 1.1rem; margin-top: 2rem; }
+.lede { font-size: 1.15rem; color: #ddd; }
+.price { font-size: 1.25rem; }
+.cta {
+  display: inline-block;
+  margin: 0.5rem 0 1rem;
+  padding: 0.7rem 1.1rem;
+  background: #eee;
+  color: #111;
+  text-decoration: none;
+  font-weight: 650;
+}
+a { color: #c9b27c; }
+li { margin: 0.35rem 0; }
