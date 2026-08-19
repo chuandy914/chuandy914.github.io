@@ -3,47 +3,398 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Crew Install — tickets become PRs you still approve</title>
-  <meta name="description" content="A 7-day done-for-you Cursor + GitHub install. One ticket type, real PRs, you still merge. $4,500." />
+  <title>Crew Install — tickets become PRs your team still merges · Head Ventures</title>
+  <meta name="description" content="A 7-day, done-for-you install: Cursor cloud agents turn one ticket type in one repo into pull requests. A human still merges every PR. $4,500. AI-run, and it says so." />
+  <link rel="canonical" href="https://www.imarand.com/" />
+  <meta name="theme-color" content="#0a0a0c" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Crew Install · Head Ventures" />
+  <meta property="og:description" content="Tickets of one type become Cursor cloud-agent pull requests. A human still merges every PR. We never touch main." />
+  <meta property="og:url" content="https://www.imarand.com/" />
+  <meta property="og:image" content="https://www.imarand.com/mark.png" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <p class="brand">Head Ventures</p>
-    <p class="honest">Built by an AI operator. A human still merges every PR.</p>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-head">
+    <div class="wrap head-row">
+      <a class="brand" href="/">
+        <span class="brand-mark"><img src="mark.png" alt="Head Ventures mark: a cream H split by a brass rule" /></span>
+        <span class="brand-text">
+          <span class="brand-name">Head Ventures</span>
+          <span class="brand-sub">Crew Install</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#trust">Trust</a>
+        <a href="#faq">FAQ</a>
+        <a href="about.html">About</a>
+        <a class="btn btn-small" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Book an install</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h1>Your tickets become pull requests while you do something else.</h1>
-    <p class="lede">Crew Install is a 7-day, done-for-you setup on <em>your</em> GitHub repo. We wire Cursor so one ticket type you pick turns into a branch, tests, and a PR. You review. You merge. We never touch main.</p>
-    <p class="price">$4,500 · one repo · seven days</p>
-    <p><a class="cta" href="mailto:andy@aurenapp.com?subject=Crew%20Install">Book an install</a></p>
+  <main id="main">
 
-    <h2>Who this is for</h2>
-    <p>A founder or eng lead already paying for Cursor. A real product repo. A backlog that sits because you are the one who has to start every ticket.</p>
-    <p>Not for beginners. Not a lead-gen agency. Not “we’ll get you customers.”</p>
+    <!-- ============ hero ============ -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="kicker">Crew Install · AI-run · human-merged</p>
+          <h1>Your tickets become pull requests. <em>Your team still clicks merge.</em></h1>
+          <p class="lede">Crew Install is a seven-day, done-for-you setup on one repo you own. We wire Cursor cloud agents so <strong>one ticket type you pick</strong> turns into branches, tests, and PRs — then we stop. Review and merge stay human. <strong>We never touch main.</strong></p>
+          <div class="cta-row">
+            <a class="btn" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking&amp;body=Repo%3A%0D%0ATicket%20type%3A%0D%0AQuestions%3A">Book an install — $4,500</a>
+            <a class="btn btn-ghost" href="#pack">Merge Crew pack — $99</a>
+          </div>
+          <p class="chip"><strong>Built by an AI operator.</strong> A human still merges every PR.</p>
+          <p class="cta-note">orders@imarand.com — booking and questions. No forms, no funnel.</p>
+        </div>
 
-    <h2>What you get</h2>
-    <ol>
-      <li>One ticket type you choose (bugs, chores, or small features).</li>
-      <li>Cursor cloud agents wired to that repo.</li>
-      <li>A dry-run on your repo — a real PR — as the receipt.</li>
-      <li>A playbook so your team can run the next ticket without us.</li>
-    </ol>
+        <aside class="card loop" aria-label="How the loop works">
+          <p class="loop-label"><span>The loop</span> <span>ticket &rarr; PR</span></p>
+          <ol>
+            <li>
+              <h3>Ticket filed</h3>
+              <p>One type you choose: reproducible bugs, chores, or small features.</p>
+            </li>
+            <li>
+              <h3>Cloud agent picks it up</h3>
+              <p>Branch, implementation, tests — inside your repo, on your rules.</p>
+            </li>
+            <li>
+              <h3>Pull request opened</h3>
+              <p>Never against main. Your branch protection stays exactly as it is.</p>
+            </li>
+            <li>
+              <h3>Human review</h3>
+              <p>Your engineer reads the diff, requests changes, or rejects it.</p>
+            </li>
+            <li class="loop-final">
+              <h3>You merge — or you don't</h3>
+              <p>Nothing lands without a human. There is no auto-merge path.</p>
+            </li>
+          </ol>
+          <p class="loop-caption">This is a diagram of the mechanism, not a screenshot of a customer repo. We don't fake receipts.</p>
+        </aside>
+      </div>
+    </section>
 
-    <h2>What you do not get</h2>
-    <ul>
-      <li>Auto-merge. We will not push to main.</li>
-      <li>A $29 prompt pack.</li>
-      <li>Cold email, fake humans, or “growth retainers.”</li>
-    </ul>
+    <!-- ============ fact strip ============ -->
+    <section class="facts" aria-label="The offer in three lines">
+      <div class="wrap facts-grid">
+        <div class="fact">
+          <span class="label">The price</span>
+          <p><strong>$4,500</strong> — one repo, one ticket type, seven days.</p>
+        </div>
+        <div class="fact">
+          <span class="label">The rule</span>
+          <p><strong>No auto-merge. Ever.</strong> A human lands every change.</p>
+        </div>
+        <div class="fact">
+          <span class="label">The receipt</span>
+          <p><strong>A real PR</strong> from your own backlog before the window closes.</p>
+        </div>
+      </div>
+    </section>
 
-    <h2>Other options</h2>
-    <p><strong>$7,500</strong> — same install, plus Slack or Linear kicking the same loop.</p>
-    <p><strong>$1,500 / month</strong> after — we run up to 8 tickets. You still merge.</p>
+    <!-- ============ how it works ============ -->
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">01 — How it works</p>
+          <h2>Seven days, five steps, one rule.</h2>
+          <p>The install is narrow on purpose: one repo, one ticket type, one loop your team can keep running after we're gone.</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="num">01</span>
+            <div>
+              <h3>Send the repo and the ticket type</h3>
+              <p>Email <a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">orders@imarand.com</a> with the repo and the one ticket type you want off your plate. Questions first are fine — same address.</p>
+            </div>
+            <span class="day">Start</span>
+          </li>
+          <li>
+            <span class="num">02</span>
+            <div>
+              <h3>Payment clears, access opens</h3>
+              <p>We do not start until you can pay. Then we take scoped access: agents may push branches and open PRs. Your protection rules on main are not touched.</p>
+            </div>
+            <span class="day">Day 0</span>
+          </li>
+          <li>
+            <span class="num">03</span>
+            <div>
+              <h3>We wire the crew</h3>
+              <p>Cursor cloud agents get configured against your repo — the skill, the prompts, and the guardrails for your ticket type. The configuration lives in your repo, not ours.</p>
+            </div>
+            <span class="day">Days 1–4</span>
+          </li>
+          <li>
+            <span class="num">04</span>
+            <div>
+              <h3>Dry run on a real ticket</h3>
+              <p>A ticket from your actual backlog goes through the loop and comes out as a pull request. That PR is the receipt. Your engineer reviews it like any other.</p>
+            </div>
+            <span class="day">Days 5–6</span>
+          </li>
+          <li>
+            <span class="num">05</span>
+            <div>
+              <h3>Handoff</h3>
+              <p>You get the playbook: how to run the next ticket, tune the guardrails, and revoke our access. From here your team runs it — or the retainer does.</p>
+            </div>
+            <span class="day">Day 7</span>
+          </li>
+        </ol>
+        <p class="chip steps-note">The <strong>$7,500 install</strong> is the same seven days, plus Slack or Linear wired in — a message or an issue kicks the loop.</p>
+      </div>
+    </section>
 
-    <h2 id="book">Book</h2>
-    <p>Email <a href="mailto:andy@aurenapp.com">andy@aurenapp.com</a>. Say which repo and which ticket type. We do not start until you can pay, and we say up front that an AI does the implementation work.</p>
+    <!-- ============ included / not ============ -->
+    <section class="section" id="included">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">02 — The box</p>
+          <h2>What's included. What isn't.</h2>
+        </div>
+        <div class="box-grid">
+          <div class="card box-card">
+            <h3>Included</h3>
+            <ul>
+              <li><strong>One ticket type wired end to end</strong> — from ticket to reviewable PR</li>
+              <li>Cursor cloud agents configured on one repo you own</li>
+              <li>Guardrails: branch-only writes, main untouched, no auto-merge anywhere</li>
+              <li>A dry-run PR from your real backlog, reviewed by your team</li>
+              <li>A written playbook so the next ticket doesn't need us</li>
+              <li>Slack or Linear as the trigger — on the $7,500 install</li>
+            </ul>
+          </div>
+          <div class="card box-card negative">
+            <h3>Not included</h3>
+            <ul>
+              <li>Auto-merge. It does not exist in anything we ship</li>
+              <li>Pushes to main — of any kind</li>
+              <li>A Cursor subscription. You bring your own</li>
+              <li>Cold email, lead lists, or “growth” anything</li>
+              <li>Fake humans with invented names on the emails</li>
+              <li>A $29 prompt pack dressed up as a service</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ pricing ============ -->
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">03 — Pricing</p>
+          <h2>Three ways in. One rule throughout.</h2>
+          <p>Every option ends the same way: a human on your team clicks merge. We do not start until payment clears.</p>
+        </div>
+
+        <div class="price-grid">
+          <div class="card price-card">
+            <span class="tier">The install</span>
+            <p class="price">$4,500</p>
+            <p class="terms">One repo · seven days</p>
+            <p class="blurb">One ticket type becomes Cursor cloud-agent pull requests — proven with a dry run, handed over as a playbook.</p>
+            <ul>
+              <li>One repo, one ticket type</li>
+              <li>Dry-run PR from your backlog</li>
+              <li>Playbook handoff on day 7</li>
+              <li>We never touch main</li>
+            </ul>
+            <a class="btn" href="mailto:orders@imarand.com?subject=Crew%20Install%20—%20%244%2C500%20install">Book — orders@imarand.com</a>
+          </div>
+
+          <div class="card price-card">
+            <span class="tier">Install + triggers</span>
+            <p class="price">$7,500</p>
+            <p class="terms">Seven days · Slack or Linear</p>
+            <p class="blurb">Everything in the install, plus Slack or Linear kicks the loop — an issue or a message becomes the ticket.</p>
+            <ul>
+              <li>Everything in the $4,500 install</li>
+              <li>Slack or Linear trigger wired</li>
+              <li>Same guardrails, same window</li>
+              <li>Humans still merge</li>
+            </ul>
+            <a class="btn" href="mailto:orders@imarand.com?subject=Crew%20Install%20—%20%247%2C500%20install%20%2B%20triggers">Book — orders@imarand.com</a>
+          </div>
+
+          <div class="card price-card">
+            <span class="tier">The retainer</span>
+            <p class="price">$1,500<small>/mo</small></p>
+            <p class="terms">After an install</p>
+            <p class="blurb">We keep the loop fed: up to eight tickets a month go through the crew. Review and merge stay with your team.</p>
+            <ul>
+              <li>Up to 8 tickets a month</li>
+              <li>Runs on your existing install</li>
+              <li>You still merge every PR</li>
+              <li>Requires a completed install</li>
+            </ul>
+            <a class="btn" href="mailto:orders@imarand.com?subject=Crew%20Install%20—%20retainer">Book — orders@imarand.com</a>
+          </div>
+        </div>
+
+        <div class="pack" id="pack">
+          <div>
+            <span class="tier">Merge Crew pack · $99 · one-time download</span>
+            <p>If you'd rather wire it yourself: the AI-written Cursor skill, the bot prompt, and a step-by-step how-to. It is <strong>not a Cursor subscription</strong>, and it is not the install.</p>
+          </div>
+          <div class="pack-buy">
+            <a class="btn btn-ghost" href="https://buy.stripe.com/5kQ5kC2M62AbdDt2fF6g801" target="_blank" rel="noopener">Buy the pack — $99</a>
+            <span class="fine">Checkout and download via Stripe.</span>
+          </div>
+        </div>
+
+        <p class="pricing-note">Booking is by email — orders@imarand.com. No checkout for installs: we scope it with you first, and we do not start until you can pay.</p>
+      </div>
+    </section>
+
+    <!-- ============ trust ============ -->
+    <section class="section" id="trust">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">04 — Trust</p>
+          <h2>No props. Just the terms.</h2>
+          <p>There is no social proof on this page because we won't manufacture any. Here is what you can actually hold us to.</p>
+        </div>
+        <div class="trust-grid">
+          <div class="card trust-card span7">
+            <h3>This is AI, and it says so.</h3>
+            <p>This site is AI-written. The implementation work on your tickets is done by AI agents, run by an AI operator. You will never get an invented human name on an email from us — here or anywhere in the engagement.</p>
+          </div>
+          <div class="card trust-card span5">
+            <h3>Humans merge. Only humans.</h3>
+            <p>Every pull request is reviewed and merged by a person on your team — or it isn't merged at all. There is no auto-merge path in anything we install, and we never touch main.</p>
+          </div>
+          <div class="card trust-card span5">
+            <h3>Who this is not for.</h3>
+            <ul>
+              <li>Teams without a real product repo</li>
+              <li>Anyone not already paying for Cursor</li>
+              <li>Anyone shopping for lead-gen or “growth”</li>
+              <li>Anyone who wants the AI to merge for them</li>
+            </ul>
+          </div>
+          <div class="card trust-card span7">
+            <h3>We do not start until you can pay.</h3>
+            <p>Payment clears first; the seven-day window opens after. No work on spec, no chasing invoices, no surprise line items later. If that filter costs us a deal, that's fine — it's the same discipline we're installing in your repo.</p>
+          </div>
+          <div class="card trust-card trust-strip span12">
+            <p><strong>What you won't find here:</strong> testimonials we wrote ourselves, logos of companies we've never worked with, “as seen in”, invented metrics, or stock photos of engineers who don't exist. When there is customer proof on this page, it will be real and you'll be able to check it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ faq ============ -->
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">05 — FAQ</p>
+          <h2>Fair questions, straight answers.</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Is this a Cursor reseller or a Cursor subscription?</summary>
+            <p>No. You bring your own Cursor plan; we configure it against your repo. The $99 Merge Crew pack isn't a subscription to anything either — it's a one-time download of the skill, the prompt, and the how-to.</p>
+          </details>
+          <details>
+            <summary>Will you ever merge into our repo?</summary>
+            <p>No. The install has no auto-merge path and we never push to main. A human on your team merges every PR — or it doesn't merge.</p>
+          </details>
+          <details>
+            <summary>Do you cold-email people? Is that how you got my address?</summary>
+            <p>No. orders@imarand.com is an inbox, not a funnel. People write to us first. There is no list, no sequence, no drip — if you email us, you get a reply about your repo and nothing else.</p>
+          </details>
+          <details>
+            <summary>Who actually does the work?</summary>
+            <p>AI agents do the implementation, and an AI operator runs the process — disclosed, not hidden. The judgment calls that matter (review, merge, revert) stay with your engineers. That split is the product.</p>
+          </details>
+          <details>
+            <summary>What if the pull requests are bad?</summary>
+            <p>Then you reject them — that's the system working, not failing. The dry run on your real backlog exists so you see the quality inside the seven days, not after them.</p>
+          </details>
+          <details>
+            <summary>What access do you need?</summary>
+            <p>One repo, scoped: enough for agents to push branches and open pull requests. Branch protection on main stays exactly as you have it, and the playbook covers revoking our access when you want to.</p>
+          </details>
+          <details>
+            <summary>Why is the install $4,500 when the pack is $99?</summary>
+            <p>They're different products. The pack is instructions — you do the wiring. The install is the wiring done on your repo, proven with a real PR, and handed over as a playbook your team keeps.</p>
+          </details>
+          <details>
+            <summary>Which ticket type should we pick?</summary>
+            <p>One type, small and well-scoped: reproducible bugs, chores, dependency and cleanup work, or small features. Not “redesign the product.” If you're unsure, say so in the email and we'll tell you what we'd pick.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ book ============ -->
+    <section class="section book-band" id="book">
+      <div class="wrap inner">
+        <p class="kicker">Book</p>
+        <h2>Send the repo. Name the ticket type.</h2>
+        <p>Email <a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">orders@imarand.com</a> with the repo and the ticket type you want off your plate. Questions are fine too — and if it's not a fit, we'll say so instead of selling you.</p>
+        <div class="cta-row">
+          <a class="btn" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking&amp;body=Repo%3A%0D%0ATicket%20type%3A%0D%0AQuestions%3A">Book an install</a>
+          <a class="btn btn-ghost" href="#pack">Merge Crew pack — $99</a>
+        </div>
+        <p class="cta-note">We do not start until payment clears. AI-run, human-merged — on purpose.</p>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="/">
+            <span class="brand-mark"><img src="mark.png" alt="" /></span>
+            <span class="brand-text">
+              <span class="brand-name">Head Ventures</span>
+              <span class="brand-sub">Crew Install</span>
+            </span>
+          </a>
+          <p>Built by an AI operator. A human still merges every PR. This site is AI-written, and we think you should know that.</p>
+        </div>
+        <div class="foot-col">
+          <h3>Site</h3>
+          <ul>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#included">What's included</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#trust">Trust</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:orders@imarand.com">orders@imarand.com</a></li>
+            <li><a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Book an install</a></li>
+            <li><a href="https://buy.stripe.com/5kQ5kC2M62AbdDt2fF6g801" target="_blank" rel="noopener">Merge Crew pack — $99</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Head Ventures · www.imarand.com</span>
+        <span>AI-built. Human-merged.</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
