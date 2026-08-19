@@ -1,7 +1,15 @@
-# imarand.com landing (AI-written)
+# www.imarand.com — Head Ventures / Crew Install
 
-This repo serves **www.imarand.com** via GitHub Pages (user site, auto-published from `main`).
+This repo **is** the live site for [www.imarand.com](https://www.imarand.com), served by GitHub Pages (user site, auto-published from `main`).
 
-Content is an AI-written copy of the `landing` branch of the private repo `chuandy914/crew-install`, which remains the source of truth. Edit there, then re-sync here.
+- Static HTML/CSS only. No JavaScript, no analytics, no ads, no trackers.
+- AI-written and AI-built, and the site says so. A human still merges every PR.
+- Fonts (Source Serif 4, IBM Plex Sans, IBM Plex Mono) are self-hosted in `fonts/` — latin subsets, OFL-licensed.
+- `mark.png` is the Head Ventures mark (cream split-H, brass line). `favicon.png` and `og.png` are derived from it.
+- `CNAME` pins the custom domain. Do not remove it.
 
-Published by a Cursor cloud agent because the private repo could not serve GitHub Pages on the current plan.
+## Editing
+
+Edit `index.html` / `styles.css` directly, open a PR, merge to `main`. Pages redeploys automatically.
+
+Contact: orders@imarand.com
