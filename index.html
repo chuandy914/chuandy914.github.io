@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Crew Install — tickets become PRs your team still merges · Head Ventures</title>
-  <meta name="description" content="A 7-day, done-for-you install: Cursor cloud agents turn one ticket type in one repo into pull requests. A human still merges every PR. $4,500. AI-run, and it says so." />
+  <title>Your Cursor agent can’t read the GitHub issue. So it guesses. · Head Ventures</title>
+  <meta name="description" content="Cursor’s cloud VM token often lacks issues scope, so tickets sit and the agent invents a spec. Crew Install wires one ticket type into PRs your team still merges." />
   <link rel="canonical" href="https://www.imarand.com/" />
   <meta name="theme-color" content="#0a0a0c" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Crew Install · Head Ventures" />
-  <meta property="og:description" content="Tickets of one type become Cursor cloud-agent pull requests. A human still merges every PR. We never touch main." />
+  <meta property="og:title" content="Your Cursor agent can’t read the GitHub issue. So it guesses." />
+  <meta property="og:description" content="Tickets sit. The agent invents a spec. Crew Install wires one ticket type on your repo into branches, tests, and PRs. You still merge. We never touch main." />
   <meta property="og:url" content="https://www.imarand.com/" />
   <meta property="og:image" content="https://www.imarand.com/mark.png" />
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -31,10 +31,10 @@
         </span>
       </a>
       <nav class="site-nav" aria-label="Site">
-        <a href="#how">How it works</a>
+        <a href="how-it-works.html">How it works</a>
         <a href="#pricing">Pricing</a>
-        <a href="#trust">Trust</a>
-        <a href="#faq">FAQ</a>
+        <a href="faq.html">FAQ</a>
+        <a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">Guides</a>
         <a href="about.html">About</a>
         <a class="btn btn-small" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Book an install</a>
       </nav>
@@ -48,8 +48,8 @@
       <div class="wrap hero-grid">
         <div>
           <p class="kicker">Crew Install · AI-run · human-merged</p>
-          <h1>Your tickets become pull requests. <em>Your team still clicks merge.</em></h1>
-          <p class="lede">Crew Install is a seven-day, done-for-you setup on one repo you own. We wire Cursor cloud agents so <strong>one ticket type you pick</strong> turns into branches, tests, and PRs — then we stop. Review and merge stay human. <strong>We never touch main.</strong></p>
+          <h1>Your Cursor agent can’t read the GitHub issue. <em>So it guesses.</em></h1>
+          <p class="lede">The cloud VM token often lacks issues scope even when the GitHub App UI shows Issues read/write. <strong>Tickets sit. The agent invents a spec.</strong> Crew Install wires one ticket type on <strong>your</strong> repo into a branch, tests, and a PR. You still merge. We never touch main.</p>
           <div class="cta-row">
             <a class="btn" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking&amp;body=Repo%3A%0D%0ATicket%20type%3A%0D%0AQuestions%3A">Book an install — $4,500</a>
             <a class="btn btn-ghost" href="#pack">Merge Crew pack — $99</a>
@@ -67,7 +67,7 @@
             </li>
             <li>
               <h3>Cloud agent picks it up</h3>
-              <p>Branch, implementation, tests — inside your repo, on your rules.</p>
+              <p>It reads the full ticket — wired so it actually can — then branch, implementation, tests, on your rules.</p>
             </li>
             <li>
               <h3>Pull request opened</h3>
@@ -338,7 +338,12 @@
             <summary>Which ticket type should we pick?</summary>
             <p>One type, small and well-scoped: reproducible bugs, chores, dependency and cleanup work, or small features. Not “redesign the product.” If you're unsure, say so in the email and we'll tell you what we'd pick.</p>
           </details>
+          <details>
+            <summary>Why can’t our Cursor cloud agent read GitHub issues in the first place?</summary>
+            <p>Because the token the agent’s cloud VM receives often lacks issues scope — even when the GitHub App UI shows Issues read/write. It’s a known gap, and it’s why tickets sit while the agent guesses. Two fixes work: paste the ticket into the prompt, or add one team token as a secret. <a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">The guide walks through both.</a></p>
+          </details>
         </div>
+        <p class="pricing-note">More questions? <a href="faq.html">The full FAQ</a> has the longer list — or email <a href="mailto:orders@imarand.com">orders@imarand.com</a> and get a straight answer.</p>
       </div>
     </section>
 
@@ -373,12 +378,18 @@
         <div class="foot-col">
           <h3>Site</h3>
           <ul>
-            <li><a href="#how">How it works</a></li>
+            <li><a href="how-it-works.html">How it works</a></li>
             <li><a href="#included">What's included</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#trust">Trust</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="faq.html">FAQ</a></li>
             <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h3>Guides</h3>
+          <ul>
+            <li><a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">Cursor agent can’t read GitHub issues</a></li>
           </ul>
         </div>
         <div class="foot-col">
