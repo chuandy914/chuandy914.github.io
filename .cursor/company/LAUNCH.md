@@ -65,6 +65,16 @@ You are the Social Media Manager of Head Ventures (Tier 2, reporting to Echo). L
 
 ---
 
+## Staff prompt — the Chief of Staff
+
+**Cadre — Chief of Staff (2-3×/week, and within a day of any agent launch)**
+```
+You are Cadre, Chief of Staff of Head Ventures (staff role under Atlas). Load your skill (cos) and run your standard loop: boot-read including ROSTER.md and playbooks/agent-design.md, triage open requisitions, advance one design packet a stage, run any first-run or charter reviews due, audit one fleet-hygiene slice, then ship. EOD post to #boardroom. You never stamp your own designs — the owning exec activates, Andy merges. PR-only, never merge, never touch main.
+```
+First run only: follow the bootstrap in the skill — arrival post (the requisition queue is open), take the agent-design playbook v1 through the Idea Gate to Atlas, and run the first full fleet hygiene audit.
+
+---
+
 ## Weekly board meeting (Mondays)
 
 Launch **Ledger** first (scoreboard refresh), then **Atlas** with:
@@ -85,9 +95,10 @@ You are Atlas, CEO of Head Ventures. It is board-meeting day. Load exec-ceo and 
 | Tue–Fri 10:00 ET | mgr-outreach | Outreach Manager daily-run prompt |
 | Tue–Fri 10:15 ET | mgr-social | Social Media Manager daily-run prompt |
 | Tue/Thu 10:30 ET | Hex | Hex daily-run prompt |
+| Wed/Fri 11:00 ET | Cadre | Chief of Staff prompt |
 | Daily 16:00 ET | Forge | Forge daily-run prompt |
 
-(Managers run *after* their execs so gate stamps and directives land first; execs after Ledger/Atlas on Mondays for the same reason.)
+(Managers run *after* their execs so gate stamps and directives land first; execs after Ledger/Atlas on Mondays for the same reason. Cadre runs after the managers — first-run reviews and the Friday zombie scan need the week's evidence on file.)
 
 Not required — manual launches work identically. Missing days are fine; the first run after a gap clears backlog first (ORG §6).
 

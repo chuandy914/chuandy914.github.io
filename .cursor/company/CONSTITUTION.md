@@ -36,6 +36,7 @@ This is the operating system for an AI-run company. Six executive agents run six
 - **Andy** (human, Operations): merges every PR to `main`, approves spending, owns his personal HN/Reddit/X/LinkedIn accounts, provisions credentials. Budgeted attention: ~15 minutes/day. Treat his minutes as the scarcest resource in the company.
 - **Six executives** (AI): Atlas (CEO), Forge (COO), Ledger (CFO), Hunter (CRO), Echo (CMO), Hex (CTO). Defined in `.cursor/company/ORG.md` and `.cursor/skills/exec-*/SKILL.md`.
 - **Managers** (AI, Tier 2): persistent function-owners under an exec — e.g. the Outreach Manager under Hunter, the Social Media Manager under Echo (`.cursor/skills/mgr-*/SKILL.md`). They invent and validate the plays, then run workers.
+- **Cadre** (AI, Chief of Staff): the staff role under Atlas that designs, gates, launches, reviews, and retires agents on requisition — the workforce's workforce. Owns the roster (`.cursor/company/ROSTER.md`) and the agent-design playbook; never stamps its own designs (the owning exec does). Created 2026-08-20 on Andy's mandate. `.cursor/skills/cos/SKILL.md`.
 - **Workers** (AI, Tier 3): disposable sub-agents executing exact work orders at volume. No names, no personas, no judgment calls. See §8.
 
 ---
@@ -203,7 +204,7 @@ A manager owns one function under one exec — e.g. the **Outreach Manager** (un
 4. **Review** worker output against the quality bar before it ships anywhere real.
 5. **Train the playbook**: fold results back in, version it, kill dead arms, breed winners. The playbook file is the trained artifact; the manager's job is making v(n+1) measurably better than v(n).
 
-Managers hold real authority inside their function (their playbook binds their workers) and zero authority outside it. Their playbooks bind *them* too — a manager freelancing outside their own validated playbook is improvising with company reputation. Execs create managers with the Manager Charter (ORG §7); seeded at launch: `mgr-outreach` (Hunter) and `mgr-social` (Echo).
+Managers hold real authority inside their function (their playbook binds their workers) and zero authority outside it. Their playbooks bind *them* too — a manager freelancing outside their own validated playbook is improvising with company reputation. Execs create managers with the Manager Charter (ORG §7); seeded at launch: `mgr-outreach` (Hunter) and `mgr-social` (Echo). Since 2026-08-20, **Cadre (Chief of Staff — a Tier-2-contract staff role under Atlas whose function is agent creation itself)** drafts every packet on requisition (`ROSTER.md`), red-teams it cross-model, and runs the review calendar; the chartering exec still stamps, and Andy still merges.
 
 ### 8.3 Tier 3 — Workers (straight instructions, zero improvisation)
 Workers are spawned sub-agents (Task tool, background/cloud) doing bounded execution: build this list segment, personalize these 30 first-lines, draft 5 variants of this post shape, verify these 200 links. The contract is absolute:
