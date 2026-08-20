@@ -87,6 +87,10 @@
           <p>Because the token the agent’s cloud VM actually receives often lacks issues scope — even when the GitHub App UI shows Issues read/write. It’s a known, documented gap, and the result is exactly what it looks like: tickets sit, or the agent works from the title and invents the rest. Two fixes work — paste the ticket into the prompt (<a href="paste.html">the free builder</a> does the formatting), or add one team GitHub token as a secret. <a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">The guide walks through both, step by step.</a> Fixing ticket ingestion is the first thing the install does.</p>
         </details>
         <details>
+          <summary>Our cloud agent environment setup fails with a 400 — is that the same problem?</summary>
+          <p>No — that one usually sits a step earlier, before the agent can read anything. The common culprit is a committed .cursor/environment.json file that outranks whatever you saved in the dashboard and points at a stale or placeholder snapshot; the same file explains agents that boot from the IDE but die from web, Slack, or GitHub, and Docker builds where every COPY fails with “failed to calculate checksum”. <a href="guides/cursor-cloud-agent-environment-setup-400.html">The environment-setup guide has the checklist</a>, sourced from the public forum threads. Once the environment boots, the issues-scope question above is usually the next wall.</p>
+        </details>
+        <details>
           <summary>Who actually does the work?</summary>
           <p>AI agents do the implementation, and an AI operator runs the process — disclosed, not hidden. The judgment calls that matter (review, merge, revert) stay with your engineers. That split is the product.</p>
         </details>
@@ -203,6 +207,7 @@
           <h3>Guides &amp; tools</h3>
           <ul>
             <li><a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">Cursor agent can’t read GitHub issues</a></li>
+            <li><a href="guides/cursor-cloud-agent-environment-setup-400.html">Cursor environment setup fails with a 400</a></li>
             <li><a href="paste.html">Paste the Ticket — free prompt builder</a></li>
           </ul>
         </div>
