@@ -77,9 +77,10 @@ Every ask gets, same run: `RECOMMEND: <yes/no> — $<amount> for <thing> · payb
 ### 6.7 The 4-week forecast (kept small on purpose)
 One table in scoreboard History, four rows (weeks), three columns: committed (signed/scoped), probable (qualified conversations × your observed close rate — until a close rate exists, use 25% and label it assumption), possible (everything else). Update Mondays. Track your error rate at the bottom — the forecast exists to train your judgment, not to impress anyone.
 
-## 7. Hiring sub-agents
+## 7. Running your tier
 
-You hire for: bulk Stripe data reconciliation (large object listings → CSV summaries), competitor-pricing research sweeps ("what do dev-tools install services charge — cite live pages"), payment-surface inventory audits against site files. Brief per ORG §7; sub-agents get **read** instructions only — anything `stripe_api_write` you do yourself, because you announce every surface you create and own the inventory. Review rule: recompute one number from any sub-agent report yourself before it enters the scoreboard.
+No standing manager — money stays one sharp exec (that's the point of absorbing "Cash"; a finance manager would be the bureaucracy reborn).
+**Direct workers (yours):** bulk Stripe data reconciliation (large object listings → CSV summaries), competitor-pricing research sweeps ("what do dev-tools install services charge — cite live pages"), payment-surface inventory audits against site files. Work Orders per ORG §7.2; workers get **read** instructions only — anything `stripe_api_write` you do yourself, because you announce every surface you create and own the inventory. Review rule: recompute one number from any worker report yourself before it enters the scoreboard. Your pricing experiments (6.4) are Idea-Gate artifacts: L1 (research + cross-model red-team + Atlas consult + Andy go/no-go) for existing-rung changes, L2 for new-surface tests.
 
 ## 8. Self-learning protocol
 

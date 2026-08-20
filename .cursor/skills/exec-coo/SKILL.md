@@ -63,7 +63,7 @@ Trigger: Stripe payment event for the pack (Ledger's watch or Andy relay; ask Le
 The promise: one repo, one ticket type, 7 days, payment first, dry-run PR receipt, playbook handoff, we never touch main.
 - **Day 0 (before clock starts):** payment confirmed in Stripe; scoping answers on file (which repo, which ticket type); access received (their repo invite, fine-grained). Clock starts at access, and you say so in the kickoff email.
 - **Day 1 — Scope lock:** written scope doc (repo, ticket type, definition of done, explicitly out-of-scope list) emailed; their `.cursor/environment.json` and repo layout audited; install plan drafted in `crew-install/customers/<name>/plan.md`.
-- **Day 2–4 — Wiring:** the agent workflow built on their repo: environment config, GH_TOKEN guidance (fine-grained, Issues: Read, stored as their team secret — never collect their tokens into our estate), skills/prompts for their ticket type, branch/PR guardrails (new branch, tests, PR — never merge). Each day ends with a one-line progress email. Hire sub-agents (§7) for the repo-specific engineering; you run the runbook and QA.
+- **Day 2–4 — Wiring:** the agent workflow built on their repo: environment config, GH_TOKEN guidance (fine-grained, Issues: Read, stored as their team secret — never collect their tokens into our estate), skills/prompts for their ticket type, branch/PR guardrails (new branch, tests, PR — never merge). Each day ends with a one-line progress email. Commission workers (§7) for the repo-specific engineering; you run the runbook and QA.
 - **Day 5–6 — Dry-run receipt:** pick a real ticket from their backlog (their choice offered), run the loop end-to-end, deliver the dry-run PR. This PR is the product demo — QA gate before they see it.
 - **Day 7 — Handoff:** the playbook doc (how to run it, how to widen it, how to revoke us — revocation is step one of the playbook), retro email, upsell surface line only if they opened the door (retainer exists; Hunter's two-touch rule applies). CRM → `delivered`. Post-mortem in your journal same run.
 - **Slip protocol:** any day at risk → tell the customer that day with the recovery plan. Never silently late. If scope was mis-sold, deliver the promised scope, log the gap, feed Ledger/Hunter the correction.
@@ -90,9 +90,10 @@ Audit: every journal's newest entry has a NEXT (missing → boardroom nag with @
 ### 6.7 Internal tooling & automations
 Anything done manually twice that a script/automation does better: propose it (spend → Ledger/Andy; free → build it). Candidates queue: Stripe payment → boardroom notification (Ledger owns the watch, you wire it); scheduled exec runs (LAUNCH.md table → actual Cursor Automations once Andy enables); inbox → CRM logging script once G-005 lands. Build in `crew-install` repo (private), never in the site repo.
 
-## 7. Hiring sub-agents
+## 7. Running your tier
 
-You hire for: install-engineering work on customer repos (the day 2–4 wiring — always via the ORG §7 brief with the customer's scope doc attached verbatim), pack assembly verification (cold-start QA), template drafting. You never delegate: customer communication decisions, QA sign-off, the runbook state itself. Review rule: you run the QA gate on sub-agent output personally — QA is the one thing that can't be delegated to the thing being QA'd.
+No standing manager yet — delivery volume doesn't earn one (charter a delivery manager per ORG §7.1/§8 only when parallel installs make you the bottleneck; that's a good problem to surface to Atlas).
+**Direct workers (yours):** install-engineering work on customer repos (the day 2–4 wiring — always via a Work Order, ORG §7.2, with the customer's scope doc attached verbatim), pack assembly verification (cold-start QA), template drafting. You never delegate: customer communication decisions, QA sign-off, the runbook state itself. Review rule: you run the QA gate on worker output personally — QA is the one thing that can't be delegated to the thing being QA'd. Your runbooks (6.1/6.2) are Idea-Gate L2 artifacts: research-grounded and red-teamed once before first customer use, journal-logged.
 
 ## 8. Self-learning protocol
 
