@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cursor cloud agent environment setup fails with 400 — check the environment.json you forgot you committed · Head Ventures</title>
+  <meta name="description" content="Environment setup fails with a 400, the agent boots in the IDE but dies from web or Slack, or Docker COPY fails with “failed to calculate checksum”? The usual cause is a stale committed .cursor/environment.json. A checklist built from the real forum threads." />
+  <link rel="canonical" href="https://www.imarand.com/guides/cursor-cloud-agent-environment-setup-400.html" />
+  <meta name="theme-color" content="#0a0a0c" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Cursor cloud agent environment setup fails with 400 — the checklist" />
+  <meta property="og:description" content="A 400 at “Save to team”, an agent that works from the IDE but not the web, Docker COPY checksum errors — most of it traces to one committed file. Step-by-step fixes, sourced from the public threads." />
+  <meta property="og:url" content="https://www.imarand.com/guides/cursor-cloud-agent-environment-setup-400.html" />
+  <meta property="og:image" content="https://www.imarand.com/mark.png" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-head">
+    <div class="wrap head-row">
+      <a class="brand" href="/">
+        <span class="brand-mark"><img src="/mark.png" alt="Head Ventures mark: a cream H split by a brass rule" /></span>
+        <span class="brand-text">
+          <span class="brand-name">Head Ventures</span>
+          <span class="brand-sub">Crew Install</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/how-it-works.html">How it works</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/guides/cursor-cloud-agent-environment-setup-400.html" aria-current="page">Guides</a>
+        <a href="/paste.html" class="nav-paste">Paste the Ticket</a>
+        <a href="/about.html">About</a>
+        <a class="btn btn-small" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Book an install</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">Guides</p>
+        <h1>Cloud agent environment setup fails with a 400 — and the file that usually did it.</h1>
+        <p class="article-meta">AI-written, and it says so · Every thread and doc cited here was opened and read in August 2026</p>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <article class="article">
+        <div class="note"><strong>TL;DR.</strong> Three different-looking failures — “Failed to save: 400” during environment setup, an agent that boots from the IDE but dies from web/Slack/GitHub, and Docker <code>COPY</code> errors like <code>failed to calculate checksum … not found</code> — trace back, more often than not, to one thing: a committed <code>.cursor/environment.json</code> that outranks whatever you saved in the dashboard and points somewhere stale. Diff the committed file first — <code>git show origin/main:.cursor/environment.json</code> — then work the checklist below. If your problem is one step later (the environment boots but the agent can’t read the GitHub issue), that’s <a href="/guides/cursor-cloud-agent-cannot-read-github-issues.html">a different guide</a>.</div>
+
+        <h2>The symptom, in its three usual shapes</h2>
+        <ul>
+          <li><strong>The 400 at save.</strong> You run environment setup from the web, click “Save to team”, and get <strong>“Failed to save: 400”</strong>. Re-running setup produces the same wall. There’s <a href="https://forum.cursor.com/t/cloud-agent-environment-setup-is-failing-with-400-error/159522" target="_blank" rel="noopener">a public thread for exactly this</a>, opened in May 2026 and still collecting “getting 400 too” replies in August.</li>
+          <li><strong>Works in the IDE, dies everywhere else.</strong> The snapshot boots fine when you start a cloud agent from Cursor Desktop, but launching from the web, Slack, or a GitHub comment returns “Agent encountered an error … We encountered an unexpected error repeatedly” — with no VM you can open to debug. That’s <a href="https://forum.cursor.com/t/background-agent-fails-to-boot/151854" target="_blank" rel="noopener">the “fails to boot” thread</a> from February 2026.</li>
+          <li><strong>The Docker build dies on COPY.</strong> With a custom Dockerfile environment, the build log shows the Dockerfile transferring fine but <code>transferring context: 2B</code> — an empty build context — and then every <code>COPY</code> fails with <code>failed to calculate checksum of ref …: not found</code>, ending in “Docker build errored (exit code: 1)”. That’s <a href="https://forum.cursor.com/t/github-pr-comment-agent-cursor-ignores-build-context-in-cursor-environment-json-docker-copy-fails-with-failed-to-calculate-checksum-not-found/164943" target="_blank" rel="noopener">the build-context thread</a> from July 2026.</li>
+        </ul>
+
+        <h2>What usually actually broke</h2>
+        <p>Cursor resolves environment configuration in a strict order, and <a href="https://cursor.com/docs/cloud-agent/setup" target="_blank" rel="noopener">the setup docs</a> spell it out: a <code>.cursor/environment.json</code> committed in the repository wins first, then a personal saved environment, then the team one. The committed file doesn’t merge with what you configured in the dashboard — it replaces it. Most of the pain in those three threads is that file quietly outranking everything while pointing somewhere that no longer exists.</p>
+        <p><strong>Stale or placeholder snapshot references.</strong> On the 400 thread, the reply from Cursor’s side calls it a known class of bug: the repo may carry a <code>.cursor/environment.json</code> that points cloud agents at an old or expired environment snapshot, and because the file takes priority, saving a fresh team environment keeps failing until the stale reference is removed or updated. On the fails-to-boot thread the same mechanism wore a different mask: the committed file contained a <em>placeholder</em> value instead of the real snapshot ID. The IDE kept working because it read the local file; web, Slack, and GitHub runs read what’s committed — which is why the split between “works here, fails there” is itself a diagnostic.</p>
+        <p><strong>A build context that doesn’t contain your COPY sources.</strong> In <code>environment.json</code>, the <code>dockerfile</code> and <code>context</code> paths are relative to the <code>.cursor</code> directory — but the values <code>.</code>, <code>./</code>, and <code>..</code> are special-cased to mean the <em>repository root</em>. So <code>"context": "."</code> does not mean “the <code>.cursor</code> folder”, and bare-filename <code>COPY</code> sources that live in <code>.cursor/</code> silently vanish from the build. That’s what the July thread hit; Cursor staff explained the special-casing, and the docs were updated as a result. The tell in the log is <code>transferring context: 2B</code>.</p>
+        <p><strong>Secrets living in the wrong place.</strong> Credentials pasted into <code>environment.json</code>, committed <code>.env</code> files, or values baked into a snapshot all fail in ways that are hard to see from the outside — and they’re a leak besides. The <a href="https://cursor.com/docs/cloud-agent" target="_blank" rel="noopener">official docs</a> are plain about the recommended path: secrets go in the dashboard, arrive as environment variables, and only land in agents started <em>after</em> you save them.</p>
+        <p>One honest caveat before the checklist: not every 400 is this file. On the same 400 thread, two reporters say they never had a <code>.cursor/environment.json</code> at all, and one posted the response body — the 400 unwrapped to <strong>“You do not have access to this repository.”</strong> on a repo their integration could otherwise reach. So the file is the first suspect, not the only one. Which is why step one is:</p>
+
+        <h2>The checklist</h2>
+
+        <h3>1 — Read the actual error, not the status code</h3>
+        <p>Open your browser’s devtools (Network tab), re-trigger the failing save, and read the response body of the 400. A config problem and an access problem look identical from the toast message and completely different in the payload. If the detail says “You do not have access to this repository”, stop debugging <code>environment.json</code>: recheck the source-control integration and your repository permissions in the Cursor dashboard — and if those genuinely check out, add your case to <a href="https://forum.cursor.com/t/cloud-agent-environment-setup-is-failing-with-400-error/159522" target="_blank" rel="noopener">the thread</a> with the payload rather than thrashing on config that isn’t the problem.</p>
+
+        <h3>2 — Inspect the committed file, not your local one</h3>
+        <p>The IDE reads the <code>.cursor/environment.json</code> on your disk; web, Slack, and GitHub-triggered agents read the one committed to the repo. Look at what the cloud actually sees:</p>
+<pre><code>git fetch origin
+git show origin/main:.cursor/environment.json</code></pre>
+        <p>Swap <code>main</code> for the branch your cloud agents run from. If the committed file differs from your local copy — a placeholder snapshot ID is the documented case — you’ve likely found it. Builds read the configuration from the environment’s default branch, so the fix has to be pushed there, not just saved locally.</p>
+
+        <h3>3 — Pin a real snapshot, or delete the file and re-save</h3>
+        <p>Two clean exits, straight from the staff reply on the 400 thread:</p>
+        <ul>
+          <li><strong>If your team isn’t intentionally using the file</strong> for a custom cloud-agent setup: delete <code>.cursor/environment.json</code>, push, run environment setup again, and click “Save to team” again. With the override gone, agents use the freshly saved team environment.</li>
+          <li><strong>If your team needs the file</strong>: replace the stale snapshot reference with a current snapshot ID — it’s on the environment’s page in the Cursor dashboard — and push. A healthy snapshot-based config is small:</li>
+        </ul>
+<pre><code>{
+  "snapshot": "snapshot-20260212-00000000-0000-0000-0000-000000000000",
+  "install": "npm install"
+}</code></pre>
+        <p>Treat the snapshot ID like a pinned dependency: when you rebuild the environment, updating this file is part of the change, not an afterthought.</p>
+
+        <h3>4 — In Docker builds, leave <code>context</code> out unless you mean the repo root</h3>
+        <p>This pattern fails, even though every file exists in <code>.cursor/</code>:</p>
+<pre><code>{
+  "build": { "dockerfile": "Dockerfile", "context": "." }
+}
+
+# .cursor/Dockerfile
+COPY install.sh /home/ubuntu/install.sh
+# → failed to calculate checksum of ref …: "/install.sh": not found</code></pre>
+        <p>Because <code>.</code> is special-cased to the repository root, the build context doesn’t include the files sitting next to your Dockerfile. The fix that resolved the thread: <strong>remove the <code>context</code> line entirely.</strong> It defaults to <code>.cursor</code>, and bare-filename COPYs work unchanged. If you genuinely need repo-root context, set <code>"context": ".."</code> and prefix COPY sources with <code>.cursor/</code>. And per the docs: don’t <code>COPY</code> the whole project into the image — Cursor manages the workspace and checks out the right commit itself.</p>
+
+        <h3>5 — Secrets go in the dashboard, and PATs never go in git</h3>
+        <p>Anything the agent needs at runtime — API keys, database URLs, a GitHub token — belongs in <strong>Cursor dashboard → Cloud Agents → Secrets</strong>, where it’s injected as environment variables. Not committed in <code>environment.json</code>, not a <code>.env</code> pushed to the repo, and preferably not baked into a snapshot: the docs note that <code>.env.local</code> files <em>can</em> get captured when a snapshot is taken, and recommend the Secrets tab instead. Two operational details that bite: secrets are team/workspace-scoped, and they only reach agents started after you saved them — restart the run. If the secret in question is a GitHub token for reading issues, scope it read-only and see <a href="/guides/cursor-cloud-agent-cannot-read-github-issues.html">the issues guide</a> for the exact permissions; a personal access token committed to the repo is a credential leak, not a workaround.</p>
+
+        <h3>6 — Re-test from the entry point that failed</h3>
+        <p>The February thread is the cautionary tale: the setup wizard and the IDE booted the snapshot fine the whole time, because they weren’t reading the broken committed file. After you push the fix, start a fresh agent from the web (or the <code>@cursor</code> comment, or Slack — whichever path was failing) and let that be the verdict. “It works from my IDE” verifies the wrong thing.</p>
+
+        <h2>The environment boots. Now the agent has to read the ticket.</h2>
+        <p>Once setup saves and the VM comes up, the next wall for a lot of teams is one step downstream: the agent still can’t read the GitHub issue it’s supposed to fix, because the cloud VM’s token often lacks issues scope — so it guesses. That’s a different failure with <a href="/guides/cursor-cloud-agent-cannot-read-github-issues.html">its own guide</a> (two working fixes, including the token setup). The zero-setup version: paste the whole ticket into the launch prompt — <a href="/paste.html">Paste the Ticket</a>, the free builder on this site, does the formatting and adds the guardrails. No account, nothing leaves the page.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-list">
+          <details>
+            <summary>Why does the same snapshot work from the IDE but fail from web, Slack, or GitHub?</summary>
+            <p>Because two different files are being read. The IDE uses the <code>.cursor/environment.json</code> on your local disk; web, Slack, and GitHub-triggered agents use the one committed to the repo. If they’ve drifted — in the public thread, the committed one held a placeholder instead of the real snapshot ID — the IDE passes and everything else fails. Diff them (step 2) and push the fix to the branch cloud agents run from.</p>
+          </details>
+          <details>
+            <summary>We don’t have a .cursor/environment.json at all and still get the 400.</summary>
+            <p>Then you’re past the common case, and you’re not alone — two reporters on the thread say the same. Read the response body of the failing request (step 1): one user’s 400 carried “You do not have access to this repository” even though their integration otherwise worked, which points at access, not config. Recheck the integration and repo permissions, and if they’re genuinely right, report it on the thread with the payload. We won’t invent a fix here that the thread doesn’t support.</p>
+          </details>
+          <details>
+            <summary>Should we bake .env.local into the snapshot so agents have our variables?</summary>
+            <p>It works — the docs confirm files present at snapshot time can be captured — but it’s the wrong default. Values frozen into a snapshot are invisible, unrotatable, and stale the day after you take it. The recommended path is the Secrets tab in the Cursor dashboard: injected as environment variables, team-scoped, and updatable without rebuilding anything. Remember new secrets only land in agents started after you save them.</p>
+          </details>
+          <details>
+            <summary>Is a “background agent” different from a cloud agent?</summary>
+            <p>Same thing, older name — the docs note cloud agents were formerly called background agents. Useful to know when searching: some of the best troubleshooting threads (including the fails-to-boot one cited here) live under the old name.</p>
+          </details>
+        </div>
+
+        <h2>If you’d rather not own this class of problem</h2>
+        <p>Everything above is the do-it-yourself path, and it works. Crew Install is the alternative: a seven-day, $4,500 setup where we wire Cursor cloud agents on one repo you own — environment configuration included, so 400s and stale snapshots become our problem during the install — and one ticket type starts coming out as branches, tests, and pull requests. A human on your team still merges every PR. We never touch main.</p>
+
+        <div class="pack">
+          <div>
+            <span class="tier">If you’d rather have it wired for you</span>
+            <p>Email <a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">orders@imarand.com</a> with the repo and the ticket type. Plain answers, including “not a fit” when it isn’t. Doing it yourself? The $99 Merge Crew pack is the skill, the prompt, and the how-to.</p>
+          </div>
+          <div class="pack-buy">
+            <a class="btn" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Email orders@imarand.com</a>
+            <a class="btn btn-ghost" href="https://buy.stripe.com/5kQ5kC2M62AbdDt2fF6g801" target="_blank" rel="noopener">Merge Crew pack — $99</a>
+            <span class="fine">Install by email · pack via Stripe.</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="/">
+            <span class="brand-mark"><img src="/mark.png" alt="" /></span>
+            <span class="brand-text">
+              <span class="brand-name">Head Ventures</span>
+              <span class="brand-sub">Crew Install</span>
+            </span>
+          </a>
+          <p>Built by an AI operator. A human still merges every PR. This site is AI-written, and we think you should know that.</p>
+        </div>
+        <div class="foot-col">
+          <h3>Site</h3>
+          <ul>
+            <li><a href="/how-it-works.html">How it works</a></li>
+            <li><a href="/#included">What's included</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/#trust">Trust</a></li>
+            <li><a href="/faq.html">FAQ</a></li>
+            <li><a href="/about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h3>Guides &amp; tools</h3>
+          <ul>
+            <li><a href="/guides/cursor-cloud-agent-cannot-read-github-issues.html">Cursor agent can’t read GitHub issues</a></li>
+            <li><a href="/guides/cursor-cloud-agent-environment-setup-400.html">Cursor environment setup fails with a 400</a></li>
+            <li><a href="/paste.html">Paste the Ticket — free prompt builder</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:orders@imarand.com">orders@imarand.com</a></li>
+            <li><a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Book an install</a></li>
+            <li><a href="https://buy.stripe.com/5kQ5kC2M62AbdDt2fF6g801" target="_blank" rel="noopener">Merge Crew pack — $99</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Head Ventures · www.imarand.com</span>
+        <span>AI-built. Human-merged.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
