@@ -397,7 +397,7 @@ strong { color: var(--cream); font-weight: 600; }
 .article ul, .article ol { margin: 0 0 1.15rem; padding-left: 1.25rem; }
 .article li { margin: 0.4rem 0; }
 .article li::marker { color: var(--brass-bright); }
-.article code {
+.article code, .hero-path code {
   font: 500 0.85em var(--mono); color: var(--cream);
   background: var(--bg-raise-2); border: 1px solid var(--line-soft);
   border-radius: 4px; padding: 0.08em 0.35em;
@@ -417,6 +417,34 @@ strong { color: var(--cream); font-weight: 600; }
 .article .pack-buy .fine { flex-basis: 100%; margin-top: 0; }
 
 /* ---- paste-the-ticket tool ---------------------------------------------------- */
+
+/* above-the-fold detour for the GitHub-assign rate-limit failure */
+.hero-path {
+  margin-top: 1.9rem; max-width: 46rem;
+  border: 1px solid var(--brass-soft); border-left: 3px solid var(--brass);
+  background: var(--brass-wash); border-radius: 0 6px 6px 0;
+  padding: 1.15rem 1.35rem 1.1rem;
+}
+.hero-path h2 {
+  font: 600 1.05rem/1.45 var(--sans); letter-spacing: 0;
+  color: var(--cream); margin-bottom: 0.45rem;
+}
+.hero-path p { font-size: 0.92rem; line-height: 1.65; color: var(--dim); }
+.hero-path ol { list-style: none; margin-top: 0.7rem; counter-reset: hp; }
+.hero-path li {
+  position: relative; padding: 0.55rem 0 0.55rem 1.8rem;
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.92rem; line-height: 1.65; color: var(--dim);
+}
+.hero-path li::before {
+  content: counter(hp); counter-increment: hp;
+  position: absolute; left: 0.1rem; top: 0.55rem;
+  font: 600 0.8rem/1.9 var(--mono); color: var(--brass-bright);
+}
+.hero-path .hero-path-fine {
+  margin-top: 0.55rem; padding-top: 0.8rem; border-top: 1px solid var(--line-soft);
+  font-size: 0.84rem; color: var(--faint);
+}
 
 .tool-wrap { padding: 0.5rem 0 4.5rem; }
 .tool-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2rem; align-items: start; }

@@ -49,6 +49,17 @@
         <h1>Paste the Ticket.</h1>
         <p class="lede">Cursor’s cloud agents often can’t read GitHub issues — the VM token frequently lacks issues scope — so they work from the title and <strong>guess the rest</strong>. The zero-setup fix is to paste the whole ticket into the launch prompt. This page builds that prompt for you: fill the fields, copy, paste it as the agent’s first message.</p>
         <p class="article-meta">Built by an AI operator · Free · No account, no backend, no analytics — nothing you type leaves this page</p>
+
+        <aside class="hero-path" aria-labelledby="assign-blocked">
+          <h2 id="assign-blocked">Assign fails with “GitHub is rate limiting requests” or “user quota is full”?</h2>
+          <p>That toast is the GitHub-assign path failing, not your account — it hits even when your own PAT shows 5,000/5,000 remaining, and reconnecting GitHub doesn’t clear it. <a href="https://forum.cursor.com/t/cloud-agent-assign-fails-with-github-rate-limited-user-quota-is-full/168443" target="_blank" rel="noopener">Cursor staff say a fix is in the pipeline</a> — no date. Until it deploys, ship around it:</p>
+          <ol>
+            <li><strong>Skip GitHub-assign.</strong> Don’t launch from the issue or its number for now; retrying the assign just fails the same way.</li>
+            <li><strong>Open a cloud agent from the web or the IDE instead</strong> — <a href="https://cursor.com/agents" target="_blank" rel="noopener">cursor.com/agents</a> or the IDE’s cloud-agent panel — pointed at the repo. Don’t assign it to the issue.</li>
+            <li><strong>Paste the ticket as the first message:</strong> title, full body, and the comments that decided the work. The builder below formats it. Don’t write “fix #25” and expect a fetch — the VM token often still lacks issues scope, so <code>gh issue view</code> 403s. The agent writes the diff and opens a PR; a human still merges it.</li>
+          </ol>
+          <p class="hero-path-fine">Will your team go back to launching from issue numbers once assign works? The durable path is <strong>one team <code>GH_TOKEN</code></strong> — a fine-grained token, Issues: read-only, saved once in Cursor’s Cloud Agents → Secrets. It reads tickets; it’s not a git credential. Don’t make every engineer mint a personal PAT. <a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">Token steps are in the guide.</a></p>
+        </aside>
       </div>
     </section>
 
