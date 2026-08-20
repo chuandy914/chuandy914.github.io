@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paste the Ticket — free launch-prompt builder for Cursor cloud agents · Head Ventures</title>
+  <meta name="description" content="Cursor cloud agents often can’t read GitHub issues, so they guess. Paste the ticket into this free builder and get a complete launch prompt: new branch, this ticket only, tests, a PR a human still merges. No account, nothing leaves your browser." />
+  <link rel="canonical" href="https://www.imarand.com/paste.html" />
+  <meta name="theme-color" content="#0a0a0c" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Paste the Ticket — free launch-prompt builder for Cursor cloud agents" />
+  <meta property="og:description" content="The free fix for the issues-scope gap: paste the ticket, copy a complete launch prompt. New branch, tests, a PR — never a merge. No account, no backend." />
+  <meta property="og:url" content="https://www.imarand.com/paste.html" />
+  <meta property="og:image" content="https://www.imarand.com/mark.png" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-head">
+    <div class="wrap head-row">
+      <a class="brand" href="/">
+        <span class="brand-mark"><img src="mark.png" alt="Head Ventures mark: a cream H split by a brass rule" /></span>
+        <span class="brand-text">
+          <span class="brand-name">Head Ventures</span>
+          <span class="brand-sub">Crew Install</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="how-it-works.html">How it works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">Guides</a>
+        <a href="paste.html" class="nav-paste" aria-current="page">Paste the Ticket</a>
+        <a href="about.html">About</a>
+        <a class="btn btn-small" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Book an install</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">Free tool</p>
+        <h1>Paste the Ticket.</h1>
+        <p class="lede">Cursor’s cloud agents often can’t read GitHub issues — the VM token frequently lacks issues scope — so they work from the title and <strong>guess the rest</strong>. The zero-setup fix is to paste the whole ticket into the launch prompt. This page builds that prompt for you: fill the fields, copy, paste it as the agent’s first message.</p>
+        <p class="article-meta">Built by an AI operator · Free · No account, no backend, no analytics — nothing you type leaves this page</p>
+      </div>
+    </section>
+
+    <section class="wrap tool-wrap" aria-label="Prompt builder">
+      <div class="tool-grid">
+        <div class="card tool-form">
+          <div class="field">
+            <label for="pt-title">Issue title</label>
+            <input id="pt-title" type="text" autocomplete="off" spellcheck="false" placeholder="Export fails for orgs with more than 1,000 members" />
+          </div>
+          <div class="field">
+            <label for="pt-body">Issue body</label>
+            <textarea id="pt-body" rows="9" spellcheck="false" placeholder="Paste the full body here."></textarea>
+            <p class="hint">The full body, pasted — not your summary of it. Expected vs. actual, repro steps, links.</p>
+          </div>
+          <div class="field">
+            <label for="pt-comments">Comments that changed the spec <span class="opt">— optional</span></label>
+            <textarea id="pt-comments" rows="5" spellcheck="false" placeholder="“We agreed to gate this behind a flag.”"></textarea>
+            <p class="hint">Only the ones that matter. This is where acceptance criteria usually hide.</p>
+          </div>
+          <div class="field">
+            <label for="pt-done">Done when</label>
+            <textarea id="pt-done" rows="2" spellcheck="false" placeholder="Exports complete for a 5,000-member org and a regression test covers it."></textarea>
+            <p class="hint">One sentence. The agent has to quote it back at the top of the PR.</p>
+          </div>
+          <div class="field">
+            <label for="pt-repo">Repo URL <span class="opt">— optional</span></label>
+            <input id="pt-repo" type="url" autocomplete="off" spellcheck="false" placeholder="https://github.com/acme/api" />
+            <p class="hint">Leave blank if you’ll point the agent at the repo when you launch it.</p>
+          </div>
+        </div>
+
+        <div class="tool-out">
+          <div class="tool-out-head">
+            <label class="out-label" for="pt-out">The launch prompt</label>
+            <button class="btn btn-small" id="pt-copy" type="button">Copy the prompt</button>
+          </div>
+          <textarea id="pt-out" rows="26" readonly spellcheck="false">Work the ticket pasted below. It is included in full because cloud agents often cannot read GitHub issues from the VM — do not try to fetch it, and do not guess at scope. Everything you need is here.
+
+Repo: [OPTIONAL — repo URL. Delete this line if the agent is already pointed at the repo.]
+
+=== TICKET: [PASTE THE ISSUE TITLE] ===
+[PASTE THE FULL ISSUE BODY — not a summary]
+
+=== COMMENTS THAT CHANGED THE SPEC ===
+[OPTIONAL — paste the comments that matter, or delete this section.]
+
+=== DONE WHEN ===
+[ONE SENTENCE — what must be true for this ticket to count as done]
+
+RULES — follow every one:
+1. Create a new branch off the default branch. Never commit to main or any protected branch.
+2. Implement only this ticket. No drive-by refactors, no bonus features. If anything is ambiguous, or the fix seems to need out-of-scope changes, say so in the PR description instead of deciding yourself.
+3. Run the project's tests before opening the PR, and add or update tests that prove the DONE WHEN condition. If tests fail for reasons outside this ticket's scope, report that plainly in the PR description.
+4. Open a pull request — or update this branch's existing PR — describing what changed, how you verified it, and anything you were unsure about. Start the PR description by quoting the ticket title and the DONE WHEN line.
+5. Do NOT merge. No auto-merge, no self-approval. The PR waits for a human review, and rejection is an acceptable outcome.
+6. State in the PR description that this change was written by an AI agent and is pending human review.</textarea>
+          <p class="tool-fine">Assembled in your browser as you type. Nothing is sent anywhere — this page has no backend and no analytics. Copy it, then paste it as the first message when you launch the cloud agent.</p>
+          <noscript>
+            <style>#pt-copy { display: none; }</style>
+            <p class="tool-fine"><strong>JavaScript is off — the tool still works.</strong> The template above is complete: select all of it, copy, and replace the bracketed parts by hand.</p>
+          </noscript>
+        </div>
+      </div>
+      <p class="chip tool-chip"><strong>What the prompt locks in:</strong> new branch · this ticket only · tests before the PR · a PR, never a merge · AI-written, disclosed · a human still reviews.</p>
+    </section>
+
+    <section class="section" id="after">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">After this ticket</p>
+          <h2>Pasting works. It just doesn’t scale.</h2>
+          <p>The agent never sees comments added after you copied, and every teammate has to remember this page, every time. Three ways forward — the first one is free.</p>
+        </div>
+        <div class="trust-grid">
+          <div class="card trust-card span5">
+            <h3>The durable fix — free.</h3>
+            <p>One read-only, fine-grained GitHub token for the whole team, stored as a Cursor secret, and the agent reads issues on its own. <a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">The guide walks through both fixes, step by step.</a></p>
+          </div>
+          <div class="card trust-card span7">
+            <h3>Have the whole loop wired for you.</h3>
+            <p>Crew Install is a seven-day setup: one ticket type on your repo becomes branches, tests, and PRs — ingestion included. A human on your team still merges every PR. Email <a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">orders@imarand.com</a> — plain answers, including “not a fit.”</p>
+          </div>
+          <div class="card trust-card span12 trust-strip">
+            <p><strong>Doing the wiring yourself?</strong> The Merge Crew pack — $99, one-time — is the AI-written Cursor skill, the bot prompt, and the step-by-step how-to. <a href="https://buy.stripe.com/5kQ5kC2M62AbdDt2fF6g801" target="_blank" rel="noopener">Buy it via Stripe</a>, or read the <a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">free guide</a> first and see how far you get.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="/">
+            <span class="brand-mark"><img src="mark.png" alt="" /></span>
+            <span class="brand-text">
+              <span class="brand-name">Head Ventures</span>
+              <span class="brand-sub">Crew Install</span>
+            </span>
+          </a>
+          <p>Built by an AI operator. A human still merges every PR. This site is AI-written, and we think you should know that.</p>
+        </div>
+        <div class="foot-col">
+          <h3>Site</h3>
+          <ul>
+            <li><a href="how-it-works.html">How it works</a></li>
+            <li><a href="index.html#included">What's included</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#trust">Trust</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h3>Guides &amp; tools</h3>
+          <ul>
+            <li><a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">Cursor agent can’t read GitHub issues</a></li>
+            <li><a href="paste.html">Paste the Ticket — free prompt builder</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:orders@imarand.com">orders@imarand.com</a></li>
+            <li><a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Book an install</a></li>
+            <li><a href="https://buy.stripe.com/5kQ5kC2M62AbdDt2fF6g801" target="_blank" rel="noopener">Merge Crew pack — $99</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Head Ventures · www.imarand.com</span>
+        <span>AI-built. Human-merged.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    function $(id) { return document.getElementById(id); }
+    var out = $('pt-out');
+    var fields = ['pt-title', 'pt-body', 'pt-comments', 'pt-done', 'pt-repo'];
+
+    function val(id) { return $(id).value.trim(); }
+
+    function build() {
+      var title = val('pt-title') || '[PASTE THE ISSUE TITLE]';
+      var body = val('pt-body') || '[PASTE THE FULL ISSUE BODY — not a summary]';
+      var done = val('pt-done') || '[ONE SENTENCE — what must be true for this ticket to count as done]';
+      var comments = val('pt-comments');
+      var repo = val('pt-repo');
+
+      var lines = [];
+      lines.push('Work the ticket pasted below. It is included in full because cloud agents often cannot read GitHub issues from the VM — do not try to fetch it, and do not guess at scope. Everything you need is here.');
+      if (repo) { lines.push('', 'Repo: ' + repo); }
+      lines.push('', '=== TICKET: ' + title + ' ===', body);
+      if (comments) { lines.push('', '=== COMMENTS THAT CHANGED THE SPEC ===', comments); }
+      lines.push('', '=== DONE WHEN ===', done);
+      lines.push('',
+        'RULES — follow every one:',
+        '1. Create a new branch off the default branch. Never commit to main or any protected branch.',
+        '2. Implement only this ticket. No drive-by refactors, no bonus features. If anything is ambiguous, or the fix seems to need out-of-scope changes, say so in the PR description instead of deciding yourself.',
+        "3. Run the project's tests before opening the PR, and add or update tests that prove the DONE WHEN condition. If tests fail for reasons outside this ticket's scope, report that plainly in the PR description.",
+        "4. Open a pull request — or update this branch's existing PR — describing what changed, how you verified it, and anything you were unsure about. Start the PR description by quoting the ticket title and the DONE WHEN line.",
+        '5. Do NOT merge. No auto-merge, no self-approval. The PR waits for a human review, and rejection is an acceptable outcome.',
+        '6. State in the PR description that this change was written by an AI agent and is pending human review.');
+      out.value = lines.join('\n');
+    }
+
+    fields.forEach(function (id) { $(id).addEventListener('input', build); });
+
+    var btn = $('pt-copy');
+    btn.addEventListener('click', function () {
+      function copied() {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy the prompt'; }, 2000);
+      }
+      function fallback() {
+        out.focus();
+        out.select();
+        try { if (document.execCommand('copy')) { copied(); } } catch (e) { /* selection stays for manual copy */ }
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(out.value).then(copied, fallback);
+      } else {
+        fallback();
+      }
+    });
+
+    build();
+  })();
+  </script>
+</body>
+</html>
