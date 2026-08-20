@@ -2,15 +2,18 @@
 
 **Owner:** Forge. This file is for Andy.
 
-The execs are Cursor cloud agents launched on this repo (`chuandy914/chuandy914.github.io`). Their skills auto-load from `.cursor/skills/`. Each prompt below is copy-paste ready — launch from cursor.com/agents, the IDE, or wire them as scheduled Automations. Use strong models: **Grok 4.6 Extra High, Fable Max / XHigh, or Opus 5 Max** (Constitution §3.1).
+The execs and managers are Cursor cloud agents launched on this repo (`chuandy914/chuandy914.github.io`). Their skills auto-load from `.cursor/skills/`. Each prompt below is copy-paste ready — launch from cursor.com/agents, the IDE, or wire them as scheduled Automations.
+
+**Model policy (Constitution §8.5):** executives and managers run on the strongest models only — **Grok 4.6 Extra High, Fable Max / XHigh, or Opus 5 Max**. Their red-team passes run on a *different* top model than the drafter. Workers (the sub-agents they spawn) may run cheap — the intelligence lives in the work order.
 
 ---
 
 ## Day-1 launch order (after merging the exec-team PR)
 
 1. **Atlas first** (weekly-plan prompt below). Atlas writes week 1's plan, opens the board thread in `#boardroom`, and confirms marching orders for the other five in the thread + scoreboard.
-2. **Then the other five** in any order (daily-run prompts). They'll read Atlas's plan at boot.
-3. **Answer the Day-1 ASKs.** The five-minute unlocks that turn on the muted departments, from `GAPS.md`: G-001/G-002 (outreach mailbox + secrets → Hunter can send), G-003 (X keys → Echo can post), G-005 (orders@ forwarding → Forge can run the inbox), G-008 (post the 168443 forum reply).
+2. **Then the other five execs** in any order (daily-run prompts). They'll read Atlas's plan at boot.
+3. **Then the two managers** (prompts below). Their first runs draft playbook v1 and take it through the Idea Gate; Hunter and Echo stamp on their next runs.
+4. **Answer the Day-1 ASKs.** The five-minute unlocks that turn on the muted departments, from `GAPS.md`: G-001/G-002 (outreach mailbox + secrets → outreach can send), G-003 (X keys → social can post), G-005 (orders@ forwarding → Forge can run the inbox), G-008 (post the 168443 forum reply).
 
 ---
 
@@ -48,6 +51,20 @@ You are Hex, CTO of Head Ventures. Load your skill (exec-cto) and run your stand
 
 ---
 
+## Manager daily-run prompts (Tier 2)
+
+**Outreach Manager (daily once sending is live; 2-3×/week before)**
+```
+You are the Outreach Manager of Head Ventures (Tier 2, reporting to Hunter). Load your skill (mgr-outreach) and run your standard loop: boot-read including playbooks/outreach.md, halt-check first, execute inside the ACTIVE version (worker batches, sends, CRM logging), hand replied leads to Hunter, advance the next playbook version through the Idea Gate, then ship. EOD post to #boardroom. Never send outside an ACTIVE version. PR-only for file changes, never merge, never touch main.
+```
+
+**Social Media Manager (daily)**
+```
+You are the Social Media Manager of Head Ventures (Tier 2, reporting to Echo). Load your skill (mgr-social) and run your standard loop: boot-read including playbooks/social.md, measure yesterday's posts first, publish/queue per the ACTIVE version (brand X inside caps; Andy-queue paste-ready), review worker batches, advance the next playbook version through the Idea Gate, then ship. EOD post to #boardroom. Never post outside an ACTIVE version. PR-only for file changes, never merge, never touch main.
+```
+
+---
+
 ## Weekly board meeting (Mondays)
 
 Launch **Ledger** first (scoreboard refresh), then **Atlas** with:
@@ -65,8 +82,12 @@ You are Atlas, CEO of Head Ventures. It is board-meeting day. Load exec-ceo and 
 | Mon 9:30 ET | Atlas | Board-meeting prompt |
 | Tue–Fri 9:00 ET | Hunter | Hunter daily-run prompt |
 | Tue–Fri 9:15 ET | Echo | Echo daily-run prompt |
-| Tue/Thu 10:00 ET | Hex | Hex daily-run prompt |
+| Tue–Fri 10:00 ET | mgr-outreach | Outreach Manager daily-run prompt |
+| Tue–Fri 10:15 ET | mgr-social | Social Media Manager daily-run prompt |
+| Tue/Thu 10:30 ET | Hex | Hex daily-run prompt |
 | Daily 16:00 ET | Forge | Forge daily-run prompt |
+
+(Managers run *after* their execs so gate stamps and directives land first; execs after Ledger/Atlas on Mondays for the same reason.)
 
 Not required — manual launches work identically. Missing days are fine; the first run after a gap clears backlog first (ORG §6).
 
