@@ -416,6 +416,43 @@ strong { color: var(--cream); font-weight: 600; }
 .article .pack-buy { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; text-align: left; }
 .article .pack-buy .fine { flex-basis: 100%; margin-top: 0; }
 
+/* ---- paste-the-ticket tool ---------------------------------------------------- */
+
+.tool-wrap { padding: 0.5rem 0 4.5rem; }
+.tool-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2rem; align-items: start; }
+
+.tool-form .field { margin-bottom: 1.25rem; }
+.tool-form .field:last-child { margin-bottom: 0; }
+.tool-form label {
+  display: block; font: 600 0.7rem var(--mono); letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--brass-bright); margin-bottom: 0.45rem;
+}
+.tool-form label .opt { color: var(--faint); font-weight: 400; letter-spacing: 0.08em; text-transform: none; }
+.tool-form .hint { margin-top: 0.4rem; font: 400 0.72rem/1.55 var(--mono); color: var(--faint); }
+
+.tool-form input,
+.tool-form textarea,
+.tool-out textarea {
+  width: 100%; display: block;
+  background: var(--bg-raise-2); color: var(--cream);
+  border: 1px solid var(--line); border-radius: 4px;
+  font: 400 0.88rem/1.6 var(--mono);
+  padding: 0.65rem 0.85rem;
+}
+.tool-form input::placeholder, .tool-form textarea::placeholder { color: var(--faint); opacity: 0.75; }
+.tool-form textarea, .tool-out textarea { resize: vertical; }
+
+.tool-out-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.7rem; }
+.out-label { font: 600 0.7rem var(--mono); letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); }
+.tool-out textarea { border-left: 3px solid var(--brass); min-height: 30rem; font-size: 0.8rem; }
+.tool-fine { margin-top: 0.7rem; font: 400 0.72rem/1.6 var(--mono); color: var(--faint); max-width: 44rem; }
+.tool-chip { margin-top: 2rem; }
+
+/* the header link to the tool only fits at desktop widths */
+@media (max-width: 64rem) {
+  .site-nav .nav-paste { display: none; }
+}
+
 /* ---- how-it-works page ------------------------------------------------------ */
 
 .steps p + p { margin-top: 0.6rem; }
@@ -431,6 +468,8 @@ strong { color: var(--cream); font-weight: 600; }
 @media (max-width: 62rem) {
   .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .tool-grid { grid-template-columns: 1fr; }
+  .tool-out textarea { min-height: 24rem; }
   .about-plate { max-width: 26rem; }
   .price-grid { grid-template-columns: 1fr; }
   .trust-grid .span7, .trust-grid .span5 { grid-column: span 12; }
