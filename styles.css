@@ -339,7 +339,7 @@ strong { color: var(--cream); font-weight: 600; }
 /* ---- footer ------------------------------------------------------------ */
 
 .site-foot { border-top: 1px solid var(--line-soft); padding: 3.5rem 0 2.5rem; }
-.foot-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr); gap: 2.5rem; }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 2.5fr) minmax(0, 3.5fr) minmax(0, 3fr); gap: 2.5rem; }
 .foot-brand p { font-size: 0.9rem; max-width: 24rem; margin-top: 1rem; }
 .foot-col h3 {
   font: 600 0.68rem var(--mono); letter-spacing: 0.2em; text-transform: uppercase;
@@ -374,6 +374,51 @@ strong { color: var(--cream); font-weight: 600; }
 }
 .about-plate img { width: 100%; height: auto; display: block; border: 1px solid var(--line-soft); border-radius: 8px; }
 .about-plate figcaption { margin-top: 0.7rem; font: 400 0.72rem/1.6 var(--mono); color: var(--faint); }
+
+/* ---- inner pages: shared hero lede ---------------------------------------- */
+
+.page-hero .lede { margin-top: 1rem; font-size: 1.12rem; line-height: 1.7; color: var(--dim); max-width: 37rem; }
+.page-hero .lede strong { color: var(--cream); }
+
+/* ---- faq page --------------------------------------------------------------- */
+
+.faq-groups { padding-bottom: 4.5rem; }
+.faq-groups h2 { font-size: 1.45rem; margin: 2.9rem 0 0.7rem; }
+.faq-groups h2:first-child { margin-top: 0; }
+
+/* ---- guide articles --------------------------------------------------------- */
+
+.article-meta { margin-top: 1.1rem; font: 400 0.74rem var(--mono); color: var(--faint); letter-spacing: 0.04em; }
+
+.article { max-width: 46rem; padding: 0.5rem 0 5.5rem; }
+.article p { margin: 0 0 1.15rem; }
+.article h2 { font-size: 1.6rem; margin: 2.6rem 0 0.9rem; }
+.article h3 { font-size: 1.18rem; margin: 1.9rem 0 0.7rem; }
+.article ul, .article ol { margin: 0 0 1.15rem; padding-left: 1.25rem; }
+.article li { margin: 0.4rem 0; }
+.article li::marker { color: var(--brass-bright); }
+.article code {
+  font: 500 0.85em var(--mono); color: var(--cream);
+  background: var(--bg-raise-2); border: 1px solid var(--line-soft);
+  border-radius: 4px; padding: 0.08em 0.35em;
+}
+.article pre {
+  background: var(--bg-raise); border: 1px solid var(--line-soft); border-left: 3px solid var(--brass);
+  border-radius: 6px; padding: 1.05rem 1.25rem; overflow-x: auto; margin: 0 0 1.15rem;
+}
+.article pre code { font: 400 0.82rem/1.65 var(--mono); color: var(--cream); background: none; border: none; padding: 0; }
+.article .note {
+  border: 1px solid var(--brass-soft); border-left: 3px solid var(--brass);
+  background: var(--brass-wash); border-radius: 0 6px 6px 0;
+  padding: 1.05rem 1.25rem; font-size: 0.95rem; margin: 0 0 1.4rem;
+}
+.article .pack { flex-direction: column; align-items: flex-start; gap: 1.1rem; margin-top: 2.4rem; }
+.article .pack-buy { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; text-align: left; }
+.article .pack-buy .fine { flex-basis: 100%; margin-top: 0; }
+
+/* ---- how-it-works page ------------------------------------------------------ */
+
+.steps p + p { margin-top: 0.6rem; }
 
 /* ---- 404 ------------------------------------------------------------------ */
 

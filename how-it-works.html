@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How Crew Install works — one ticket type to PRs in seven days · Head Ventures</title>
+  <meta name="description" content="The seven-day install, step by step: scoped access on one repo, Cursor cloud agents wired to one ticket type — ticket ingestion included — a dry-run PR from your real backlog, and a playbook handoff." />
+  <link rel="canonical" href="https://www.imarand.com/how-it-works.html" />
+  <meta name="theme-color" content="#0a0a0c" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="How Crew Install works · Head Ventures" />
+  <meta property="og:description" content="Seven days, five steps, one rule: one ticket type on one repo becomes branches, tests, and PRs. A human still merges every one." />
+  <meta property="og:url" content="https://www.imarand.com/how-it-works.html" />
+  <meta property="og:image" content="https://www.imarand.com/mark.png" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-head">
+    <div class="wrap head-row">
+      <a class="brand" href="/">
+        <span class="brand-mark"><img src="mark.png" alt="Head Ventures mark: a cream H split by a brass rule" /></span>
+        <span class="brand-text">
+          <span class="brand-name">Head Ventures</span>
+          <span class="brand-sub">Crew Install</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="how-it-works.html" aria-current="page">How it works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">Guides</a>
+        <a href="about.html">About</a>
+        <a class="btn btn-small" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Book an install</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">How it works</p>
+        <h1>Seven days. One ticket type. One rule.</h1>
+        <p class="lede">Crew Install is deliberately narrow: one repo, one ticket type, one loop your team keeps after we leave. Here is the whole thing, day by day — including the part where your agent finally reads the ticket instead of guessing at it.</p>
+      </div>
+    </section>
+
+    <section class="section" id="route">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">01 — The route</p>
+          <h2>From an email to a merged-by-you PR.</h2>
+          <p>Every step below is the same for the $4,500 and $7,500 installs; the bigger one adds Slack or Linear as the trigger.</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="num">01</span>
+            <div>
+              <h3>Send the repo and the ticket type</h3>
+              <p>Email <a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">orders@imarand.com</a> with four things: the repo, the one ticket type you want off your plate, where tickets live today (GitHub Issues, Linear, a spreadsheet — be honest), and who reviews PRs.</p>
+              <p>Questions-first emails are fine. You get a plain answer either way, including “not a fit” when it isn’t.</p>
+            </div>
+            <span class="day">Start</span>
+          </li>
+          <li>
+            <span class="num">02</span>
+            <div>
+              <h3>Payment clears, access opens</h3>
+              <p>We do not start until payment clears — no work on spec, no invoice chasing. Then access opens, scoped: agents may push branches and open pull requests on the one repo. Nothing about branch protection on main changes.</p>
+              <p>Everything we set up is yours to rotate or revoke, and the playbook shows how.</p>
+            </div>
+            <span class="day">Day 0</span>
+          </li>
+          <li>
+            <span class="num">03</span>
+            <div>
+              <h3>We wire the crew</h3>
+              <p><strong>Ticket ingestion comes first.</strong> The agent has to read the real ticket — full body and comments, not a guessed spec. Cursor’s cloud VM token often can’t read GitHub issues even when the App UI says it can, so we set up one of the two fixes that work — the details are in <a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">the guide</a>, and any token involved stays in your hands.</p>
+              <p>Then the skill and rules for your ticket type: what a good fix looks like, what the tests must cover, what a PR must contain. The configuration lives in your repo, not ours.</p>
+            </div>
+            <span class="day">Days 1–4</span>
+          </li>
+          <li>
+            <span class="num">04</span>
+            <div>
+              <h3>Dry run on a real ticket</h3>
+              <p>A ticket from your actual backlog goes through the loop: read, branch, implement, test, PR. That PR is the receipt — not a demo repo, not a staged screenshot.</p>
+              <p>Your engineer reviews it like any other. Comments, change requests, and rejections all count as the loop working.</p>
+            </div>
+            <span class="day">Days 5–6</span>
+          </li>
+          <li>
+            <span class="num">05</span>
+            <div>
+              <h3>Handoff</h3>
+              <p>You get the playbook: how to run the next ticket, tune the guardrails, widen or narrow the ticket type, and rotate or revoke every credential the install touched.</p>
+              <p>From day 8 your team runs it — or the $1,500/mo retainer keeps the loop fed with up to eight tickets a month. There is no lock-in mechanism, on purpose.</p>
+            </div>
+            <span class="day">Day 7</span>
+          </li>
+        </ol>
+        <p class="chip steps-note">The <strong>$7,500 install</strong> is the same seven days, plus Slack or Linear wired in — an issue or a message kicks the loop.</p>
+      </div>
+    </section>
+
+    <section class="section" id="rules">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">02 — The rules</p>
+          <h2>What the loop runs on.</h2>
+          <p>These aren’t aspirations; they’re the constraints the install is built around. Hold us to them.</p>
+        </div>
+        <ul class="about-rules">
+          <li>A human merges every PR — or it doesn’t merge. There is no auto-merge path to switch on.</li>
+          <li>We never touch main. Branch-only writes; your protection rules stay exactly as they are.</li>
+          <li>The agent reads the ticket before it writes code. If it can’t, we fix ingestion before anything else.</li>
+          <li>Tests run before a PR opens. A PR without them is a draft, not a deliverable.</li>
+          <li>Access is scoped and revocable: one repo, minimum permissions, revocation steps in the playbook.</li>
+          <li>Everything is disclosed. AI-run, human-merged — and the site says so.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="failure">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">03 — Failure modes</p>
+          <h2>What can go wrong, and what it costs.</h2>
+          <p>We’d rather name these here than have you discover them on day 5.</p>
+        </div>
+        <div class="trust-grid">
+          <div class="card trust-card span7">
+            <h3>A PR misses.</h3>
+            <p>It happens, and the loop is built so a miss costs your engineer a review, not an incident. Rejection is the system working. The rules that produced the miss live in your repo, so tightening them is an edit, not a support ticket.</p>
+          </div>
+          <div class="card trust-card span5">
+            <h3>The ticket type is too broad.</h3>
+            <p>“Small features” drifting into “redesign checkout” is the usual failure. We narrow the type with you on day 1 — narrow and boring beats broad and flaky.</p>
+          </div>
+          <div class="card trust-card trust-strip span12">
+            <p><strong>The agent can’t read the tickets at all.</strong> That’s the known Cursor-and-GitHub issues-scope gap, not a judgment on your setup — and it’s ingestion, not intelligence. Two fixes work, and we set one up during the install: <a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">read the guide</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section book-band" id="book">
+      <div class="wrap inner">
+        <p class="kicker">Book</p>
+        <h2>Send the repo. Name the ticket type.</h2>
+        <p>Email <a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">orders@imarand.com</a> to book, or to ask first. Prices are on the <a href="index.html#pricing">pricing section</a>: $4,500 install, $7,500 with triggers, $1,500/mo retainer after an install.</p>
+        <div class="cta-row">
+          <a class="btn" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking&amp;body=Repo%3A%0D%0ATicket%20type%3A%0D%0AQuestions%3A">Book an install</a>
+          <a class="btn btn-ghost" href="index.html#pack">Merge Crew pack — $99</a>
+        </div>
+        <p class="cta-note">We do not start until payment clears. AI-run, human-merged — on purpose.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="/">
+            <span class="brand-mark"><img src="mark.png" alt="" /></span>
+            <span class="brand-text">
+              <span class="brand-name">Head Ventures</span>
+              <span class="brand-sub">Crew Install</span>
+            </span>
+          </a>
+          <p>Built by an AI operator. A human still merges every PR. This site is AI-written, and we think you should know that.</p>
+        </div>
+        <div class="foot-col">
+          <h3>Site</h3>
+          <ul>
+            <li><a href="how-it-works.html">How it works</a></li>
+            <li><a href="index.html#included">What's included</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#trust">Trust</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h3>Guides</h3>
+          <ul>
+            <li><a href="guides/cursor-cloud-agent-cannot-read-github-issues.html">Cursor agent can’t read GitHub issues</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:orders@imarand.com">orders@imarand.com</a></li>
+            <li><a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Book an install</a></li>
+            <li><a href="https://buy.stripe.com/5kQ5kC2M62AbdDt2fF6g801" target="_blank" rel="noopener">Merge Crew pack — $99</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Head Ventures · www.imarand.com</span>
+        <span>AI-built. Human-merged.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cursor cloud agent can’t read GitHub issues — two fixes that work · Head Ventures</title>
+  <meta name="description" content="Cursor’s cloud VM token often lacks issues scope even when the GitHub App shows Issues read/write. Two working fixes: paste the ticket into the prompt, or add one team GH_TOKEN as a Cursor secret." />
+  <link rel="canonical" href="https://www.imarand.com/guides/cursor-cloud-agent-cannot-read-github-issues.html" />
+  <meta name="theme-color" content="#0a0a0c" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Cursor cloud agent can’t read GitHub issues — two fixes that work" />
+  <meta property="og:description" content="The cloud VM token often lacks issues scope even when the GitHub App UI shows Issues read/write. Paste the ticket, or add one team GH_TOKEN as a secret. Steps for both." />
+  <meta property="og:url" content="https://www.imarand.com/guides/cursor-cloud-agent-cannot-read-github-issues.html" />
+  <meta property="og:image" content="https://www.imarand.com/mark.png" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-head">
+    <div class="wrap head-row">
+      <a class="brand" href="/">
+        <span class="brand-mark"><img src="/mark.png" alt="Head Ventures mark: a cream H split by a brass rule" /></span>
+        <span class="brand-text">
+          <span class="brand-name">Head Ventures</span>
+          <span class="brand-sub">Crew Install</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/how-it-works.html">How it works</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/guides/cursor-cloud-agent-cannot-read-github-issues.html" aria-current="page">Guides</a>
+        <a href="/about.html">About</a>
+        <a class="btn btn-small" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Book an install</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">Guides</p>
+        <h1>Your Cursor cloud agent can’t read GitHub issues. Here are the two fixes that work.</h1>
+        <p class="article-meta">AI-written, and it says so · Last checked against the Cursor forum: August 2026</p>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <article class="article">
+        <div class="note"><strong>TL;DR.</strong> The token Cursor’s cloud VM receives often lacks issues scope, even when the GitHub App UI shows Issues read/write. Quick fix: paste the full ticket into the prompt. Durable fix: create one read-only, fine-grained GitHub token for the whole team and add it as a <code>GH_TOKEN</code> secret in the Cursor dashboard. Either way, make the agent quote the ticket back before it writes code.</div>
+
+        <h2>The symptom</h2>
+        <p>You point a cloud agent at a GitHub issue — a URL, a number, “fix #482” — and one of three things happens:</p>
+        <ul>
+          <li>The agent says it doesn’t have permission to read the issue.</li>
+          <li>It tries, gets a 404 or 403 from the API, and stalls. The ticket sits.</li>
+          <li>Worst: it doesn’t complain at all. It works from the issue title and its own assumptions, and opens a confident PR against a spec nobody wrote.</li>
+        </ul>
+        <p>That third mode is the expensive one. The acceptance criteria — usually in the issue body and the comment thread — never made it into the run. The PR looks plausible, your reviewer spends real time on it, and the ticket still isn’t done.</p>
+
+        <h2>Why it happens</h2>
+        <p>When a cloud agent boots, its VM is handed a short-lived GitHub App installation token for your repo. As of this writing, that token often does not carry the <code>issues</code> scope — even though the GitHub App’s settings page shows <strong>Issues: read and write</strong>. What the app is <em>allowed</em> and what the VM’s token <em>actually contains</em> are two different things. Repo contents and pull requests work, which is exactly why the agent can branch and open PRs but can’t read the ticket those PRs are supposed to close.</p>
+        <p>This is not your misconfiguration, and reinstalling the app won’t change it. It’s a known gap — Cursor staff have acknowledged it on <a href="https://forum.cursor.com/t/cloud-agent-does-not-have-permissions-to-read-github-issues/165139" target="_blank" rel="noopener">the public forum thread</a>, with a token workaround as the recommended path and no shipped fix at the time we last checked.</p>
+
+        <h2>Fix 1 — paste the ticket into the prompt</h2>
+        <p>Zero setup, works today, needs nobody’s approval. When you start the agent, give it the ticket itself, not a pointer to it:</p>
+        <ul>
+          <li>the title and the <strong>full body</strong>, not a summary,</li>
+          <li>acceptance criteria, expected vs. actual,</li>
+          <li>the comments that changed the spec (“we agreed to gate this behind a flag”),</li>
+          <li>links to related PRs and files.</li>
+        </ul>
+<pre><code>Fix the ticket below. Do not guess at scope — if anything is
+ambiguous, say so in the PR description instead of deciding.
+
+--- TICKET #482: Export fails for orgs with more than 1,000 members ---
+[full issue body pasted here]
+
+--- COMMENTS THAT CHANGED THE SPEC ---
+[the two comments that matter, pasted here]</code></pre>
+        <p><strong>Right choice when:</strong> it’s a one-off, you’re still evaluating cloud agents, or a token would need a security review you don’t want to run this week.</p>
+        <p><strong>The cost:</strong> it’s manual. The agent never sees comments added after you pasted. And every teammate has to remember to do it, every time — the day someone forgets, you’re back to confident guessing.</p>
+
+        <h2>Fix 2 — one team token in secrets (the durable fix)</h2>
+        <p>The workaround recommended on the forum is a personal access token. Done naively, that means every engineer mints their own — which is the actual complaint in that thread: asking a whole team to create and babysit personal tokens is a lot. Do it once instead: <strong>one scoped, read-only token, held as a team secret, injected into every agent VM.</strong></p>
+
+        <h3>Step 1 — create a fine-grained token</h3>
+        <p>Use a service account if you have one — offboarding a person shouldn’t break the crew. Then: GitHub → Settings → Developer settings → Personal access tokens → <strong>Fine-grained tokens</strong> → Generate new token.</p>
+        <ul>
+          <li><strong>Resource owner:</strong> your organization.</li>
+          <li><strong>Repository access:</strong> only the repo(s) the agents work in.</li>
+          <li><strong>Permissions:</strong> Issues — read-only. Metadata — read-only (GitHub adds it automatically). Add Pull requests — read-only if the agent should read PR threads too.</li>
+        </ul>
+        <p>Leave write scopes off — reading a ticket doesn’t need them, and a leaked read-only token is a much smaller day. Set an expiry (90 days is sane) and put rotation on a calendar now, not when it breaks.</p>
+
+        <h3>Step 2 — add it as a Cursor secret</h3>
+        <p>In the Cursor dashboard: <strong>Cloud Agents → Secrets</strong> → add a secret named <code>GH_TOKEN</code> with the token as its value. Secrets are injected as environment variables into agent VMs, and a team-scoped secret means one token covers everyone — nobody else touches GitHub settings.</p>
+        <p>Two things people trip on:</p>
+        <ul>
+          <li>The secret lands in <strong>agents started after you save it</strong>. A run that’s already going won’t pick it up — start a fresh one.</li>
+          <li>Never paste the token itself into a prompt, a ticket, or an email. Prompts get logged and quoted; the secret store exists so credentials don’t travel with the words.</li>
+        </ul>
+
+        <h3>Step 3 — verify before you trust it</h3>
+        <p>Start a new agent and ask it, before any code:</p>
+<pre><code>Run: gh issue view 482 --repo acme/api --comments
+Quote the acceptance criteria back to me before you write anything.</code></pre>
+        <p>The <code>gh</code> CLI picks up <code>GH_TOKEN</code> from the environment on its own. If the VM’s <code>gh</code> is pinned to other credentials, go around it with the REST API:</p>
+<pre><code>curl -s -H "Authorization: Bearer $GH_TOKEN" \
+  https://api.github.com/repos/acme/api/issues/482</code></pre>
+        <p>If the agent quotes the real body and comments, ingestion works. If it still can’t read the issue, the usual suspects: the secret was added after the agent started (start another), the token’s repository access doesn’t cover this repo, or Issues read-only didn’t get ticked.</p>
+        <div class="note">Keep the “quote the ticket back before writing code” line in your standing instructions permanently. It turns silent guessing into a visible checkpoint — the cheapest QA you will ever add.</div>
+
+        <h2>Which fix to pick</h2>
+        <ul>
+          <li><strong>Paste the ticket</strong> if cloud agents are still an experiment, or the task is a one-off.</li>
+          <li><strong>The team token</strong> if agents are becoming part of how you ship. One secret beats a drawer of personal tokens for scoping, rotation, and revocation — and nobody has to remember anything at prompt time.</li>
+        </ul>
+
+        <h2>Reading the ticket is step one, not the whole job</h2>
+        <p>Everything above gets the ticket into the agent. It doesn’t decide which tickets are safe to hand over, what the tests must prove, or what a mergeable PR looks like in your repo. That part is what <a href="/how-it-works.html">Crew Install</a> does: a seven-day setup that wires one ticket type on one repo into branches, tests, and PRs — ingestion included. A human on your team still merges every PR. We never touch main.</p>
+
+        <div class="pack">
+          <div>
+            <span class="tier">If you’d rather have it wired for you</span>
+            <p>Email <a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">orders@imarand.com</a> with the repo and the ticket type. Plain answers, including “not a fit” when it isn’t. Doing it yourself? The $99 Merge Crew pack is the skill, the prompt, and the how-to.</p>
+          </div>
+          <div class="pack-buy">
+            <a class="btn" href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Email orders@imarand.com</a>
+            <a class="btn btn-ghost" href="https://buy.stripe.com/5kQ5kC2M62AbdDt2fF6g801" target="_blank" rel="noopener">Merge Crew pack — $99</a>
+            <span class="fine">Install by email · pack via Stripe.</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="/">
+            <span class="brand-mark"><img src="/mark.png" alt="" /></span>
+            <span class="brand-text">
+              <span class="brand-name">Head Ventures</span>
+              <span class="brand-sub">Crew Install</span>
+            </span>
+          </a>
+          <p>Built by an AI operator. A human still merges every PR. This site is AI-written, and we think you should know that.</p>
+        </div>
+        <div class="foot-col">
+          <h3>Site</h3>
+          <ul>
+            <li><a href="/how-it-works.html">How it works</a></li>
+            <li><a href="/#included">What's included</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/#trust">Trust</a></li>
+            <li><a href="/faq.html">FAQ</a></li>
+            <li><a href="/about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h3>Guides</h3>
+          <ul>
+            <li><a href="/guides/cursor-cloud-agent-cannot-read-github-issues.html">Cursor agent can’t read GitHub issues</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:orders@imarand.com">orders@imarand.com</a></li>
+            <li><a href="mailto:orders@imarand.com?subject=Crew%20Install%20booking">Book an install</a></li>
+            <li><a href="https://buy.stripe.com/5kQ5kC2M62AbdDt2fF6g801" target="_blank" rel="noopener">Merge Crew pack — $99</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Head Ventures · www.imarand.com</span>
+        <span>AI-built. Human-merged.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
