@@ -1,7 +1,7 @@
 # Playbook — Agent Design
 
-**Owner:** Cadre (Chief of Staff). **Version activation:** Atlas stamp (Idea Gate L1, Constitution §8.4).
-This is the trained artifact for how Head Ventures creates, launches, reviews, and retires agents. Cadre's job is making v(n+1) measurably better than v(n) — every launched agent's first two weeks are training data (results block, end of file).
+**Owner:** Cos (Chief of Staff). **Version activation:** Atlas stamp (Idea Gate L1, Constitution §8.4).
+This is the trained artifact for how Head Ventures creates, launches, reviews, and retires agents. Cos's job is making v(n+1) measurably better than v(n) — every launched agent's first two weeks are training data (results block, end of file).
 
 Canonical templates this playbook fills but never forks: the Manager Charter (ORG §7.1) and the Work Order (ORG §7.2).
 
@@ -11,12 +11,12 @@ Canonical templates this playbook fills but never forks: the Manager Charter (OR
 
 **Drafted:** 2026-08-20, by the Andy-commissioned founding task agent (Claude Fable 5).
 **Evidence basis:** the six live exec skills and two manager skills in this repo (structure extracted, what already works here); Constitution §§2–8; ORG §§3–8; external doctrine — xAI's Grok Bot role guidance ("the best roles own a repeatable outcome, not a loose category of questions"; the read-and-prepare → approved-actions → routines ladder), Anthropic's Project Vend phases 1–2 (helpfulness is exploitable; checklists and floors beat model intelligence; a CEO-agent overseer shared the shopkeeper's blind spots — governance must be structural, not conversational).
-**Red team:** pending — Cadre's first run (different top model, §7 brief).
+**Red team:** pending — Cos's first run (different top model, §7 brief).
 **Stamp:** pending — Atlas.
 
 ---
 
-### §1 Doctrine — the ten laws of agent design
+### §1 Doctrine — the eleven laws of agent design
 
 1. **One position, one outcome.** An agent owns a repeatable outcome ("validated outreach plays, executed at volume"), never a category of questions ("help with sales"). If the outcome can't be written in one sentence, there is no position — there's a wish.
 2. **Default no.** A new agent is a standing cost: boot-reads, journal upkeep, review calendar, failure surface. The burden of proof is on creation. Most requests correctly resolve to a skill for an existing agent or a work order.
@@ -28,6 +28,7 @@ Canonical templates this playbook fills but never forks: the Manager Charter (OR
 8. **Helpfulness is a failure mode.** Project Vend's shopkeeper lost money because it was trained to be nice — discounts to avoid conflict, folding under social pressure. Any agent that faces an external human (prospects, customers) carries hard floors in its skill: prices it cannot move, claims it cannot make, requests it must suppress-and-journal rather than satisfy.
 9. **Names for judgment, anonymity for volume.** Execs and managers get names and temperaments — persistent judgment benefits from persistent identity. Workers never do (Constitution §0, §8.3): a persona invites improvisation, and improvisation is exactly what a worker must not do.
 10. **An agent no one reviews is already rotting.** First-run review after every launch; charter review at +4 weeks; zombie scan weekly. Retirement is the system working, not the system failing.
+11. **Research before execution — receipts or it's BS** (Constitution §3.6, Andy directive 2026-08-20). No agent starts an unfamiliar or public task without first interrogating a top model (e.g. Grok 4.6 Extra High) on how the best practitioners do *that specific task*, researching the venue (where should this land given what we sell — its rules, its winning examples) and the format (what winners literally look like), and logging links + takeaways. Every skill Cos ships carries this step explicitly; every review treats receipt-less public output as a defect by definition.
 
 ### §2 The Position Needs Brief — the intake analysis
 
@@ -61,7 +62,7 @@ Walk it in order; stop at the first yes.
 2. **Is it bounded execution with the intelligence expressible as exact steps?** → **A work order** (ORG §7.2), commissioned by the relevant exec/manager. Recurring bounded work = a frozen order skeleton in the commissioning tier's playbook — still not an agent.
 3. **Is there recurring volume AND a "how" worth inventing, validating, and training, AND an exec who will own the gate?** → **A manager** (ORG §7.1 charter). This is where the org grows (ORG §8).
 4. **Is it a new revenue line needing allocation authority?** → **An exec proposal** — Atlas recommends, Andy decides, default no (ORG §8: six is the number; functions absorb, not multiply).
-5. **Is it a cross-department staff function that no single exec can own without owning the others?** → **A staff role** (Tier-2 contract under Atlas, like Cadre). Extraordinary; Andy-mandated only.
+5. **Is it a cross-department staff function that no single exec can own without owning the others?** → **A staff role** (Tier-2 contract under Atlas, like Cos). Extraordinary; Andy-mandated only.
 
 Tie-breaks: when torn between 2 and 3, choose 2 — promote to manager after the order skeleton has run 3+ times and its results demand training. When torn between 3 and 4, choose 3 — a manager under the nearest exec proves the revenue line before anyone proposes a department.
 
@@ -90,7 +91,7 @@ Mirror the seeded skills (`exec-ceo`, `mgr-outreach` are the reference implement
 2. **Mandate** — owns / explicitly does NOT own (with named neighbors) / non-goals. Law §4.
 3. **KPIs** — table: metric, definition, target. ≥1 halt threshold ("< 3% on 50+ sends halts the version"). Law §5.
 4. **Operating loop** — Constitution §3 instantiated with the role's own goal sentence and recursion examples.
-5. **Standard run procedure** — numbered, starting with the boot-read (constitution → ORG → scoreboard → gaps → own journal → own working files), ending with ship/journal/EOD. Halt-checks come before execution passes.
+5. **Standard run procedure** — numbered, starting with the boot-read (constitution → ORG → scoreboard → gaps → own journal → own working files), ending with ship/journal/EOD. Halt-checks come before execution passes. **A §3.6 research-first step gates unfamiliar and public execution:** ask a top model how the best do the specific task, then venue + format research, receipts logged — before drafting.
 6. **Playbooks** — the role's repeatable procedures. Managers: this section summarizes and points into their versioned playbook file; the file is the bible.
 7. **Tier duties** — what they commission (worker types with order skeletons), what they never delegate, their review law (spot-check rates).
 8. **Self-learning** — journal CHANGE shape, what trains their playbook, when a pattern becomes a skill.
@@ -101,7 +102,7 @@ Mirror the seeded skills (`exec-ceo`, `mgr-outreach` are the reference implement
 
 **Frontmatter:** `name` (kebab id), `description` starting "Load when a run is…" listing the trigger duties.
 **Voice:** owner energy, specific nouns, zero filler. **Length:** 80–140 lines; past 140 you're writing the playbook's content into the skill — move it.
-**QC checklist before a skill leaves your desk:** every file it writes appears in ORG §4 (or the packet amends ORG); every metric has a number; every "never" has a named alternative ("never X — instead Y"); the bootstrap is executable cold by a stranger; the description would make the right run load it and the wrong run skip it; nothing contradicts Constitution §4 or the decision-rights table.
+**QC checklist before a skill leaves your desk:** every file it writes appears in ORG §4 (or the packet amends ORG); every metric has a number; every "never" has a named alternative ("never X — instead Y"); the bootstrap is executable cold by a stranger; the description would make the right run load it and the wrong run skip it; nothing contradicts Constitution §4 or the decision-rights table; **the run procedure carries the §3.6 research pass and names where its receipts land** (journal or playbook section).
 
 ### §6 The launch prompt standard
 
@@ -119,6 +120,7 @@ Commission one worker on a **different top model** than the drafter (Constitutio
 - **(f) Social-pressure test** (external-facing roles) — the Project Vend probe: how does it respond to a discount demand, a fake authority claim, an angry prospect? Are the floors hard-coded?
 - **(g) Andy-cost** — hidden dependencies on his minutes?
 - **(h) Zombie risk** — is the review date real, the kill condition measurable, the absorption path named?
+- **(i) §3.6 compliance** — where can this agent produce public or unfamiliar output without the research-first pass? Quote the run-procedure step that should stop it; if none exists, the design fails.
 
 Verdict pasted verbatim into the packet; every point either fixed or rebutted in writing before the stamp.
 
@@ -126,7 +128,7 @@ Verdict pasted verbatim into the packet; every point either fixed or rebutted in
 
 **Launch:** prompt merged into `LAUNCH.md` (Forge sign-off in the PR per §5.3) → boardroom announcement (who, owns what, graded on what, review date) → owning exec (or Andy, for scheduled Automations) fires the first run.
 
-**First-run review** (within one Cadre run of the launch, checklist):
+**First-run review** (within one Cos run of the launch, checklist):
 1. Artifact shipped? (Constitution §2.5 — a first run with no artifact is a design defect, not a model problem.)
 2. Journal entry exists, format-correct, with a NEXT a stranger could execute cold?
 3. EOD posted, format-correct, NUMBERS real?
@@ -143,17 +145,17 @@ Verdict pasted verbatim into the packet; every point either fixed or rebutted in
 
 **9.3 Retirement procedure:** function absorbs back to the owning exec (their skill amended if needed) → playbook archived in place with a final results block (never deleted — Constitution: history is provisioning memory) → journal stays (history) → launch prompt removed from `LAUNCH.md` → roster row → RETIRED with a one-line outcome → boardroom announcement with the lesson. A retirement without a written lesson wasted the tuition.
 
-**9.4 Fleet hygiene audit** (one slice per Cadre run, rotating): **skills** (contradictions with the constitution/ORG since last amendment; length creep; dead references) → **journals** (real NEXT lines? CHANGE lines that are actual behavior changes?) → **playbooks** (versions honest? results blocks paid? stale arms?) → **roster** (rows match files? review dates current?). Defects: fix by PR if yours, handoff row if theirs, boardroom either way.
+**9.4 Fleet hygiene audit** (one slice per Cos run, rotating): **skills** (contradictions with the constitution/ORG since last amendment; length creep; dead references; §3.6 step present) → **journals** (real NEXT lines? CHANGE lines that are actual behavior changes?) → **playbooks** (versions honest? results blocks paid? stale arms?) → **roster** (rows match files? review dates current?) → **research receipts** (§3.6: sample the public artifacts shipped since the last audit — posts, sends, published pages — and trace each to linked research in a journal or playbook; a receipt-less artifact is a defect logged against its owner in the boardroom). Defects: fix by PR if yours, handoff row if theirs, boardroom either way.
 
 ### §10 Requisitions — how anyone asks for an agent
 
-Any exec or manager appends a row to `ROSTER.md` §Requisitions: the function, the outcome it would own, the evidence of recurring volume (real counts), urgency. Andy can skip the queue (his word beats everything). Cadre triages every open row within two runs: **accept** (needs brief begins) / **decline** (written verdict — usually "here's the skill/order skeleton instead", which you then draft as the consolation artifact) / **defer** (named evidence threshold that reopens it). The queue is public; verdicts are announced; a declined requisition with a better consolation artifact is a *good* outcome, not a rejection.
+Any exec or manager appends a row to `ROSTER.md` §Requisitions: the function, the outcome it would own, the evidence of recurring volume (real counts), urgency. Andy can skip the queue (his word beats everything). Cos triages every open row within two runs: **accept** (needs brief begins) / **decline** (written verdict — usually "here's the skill/order skeleton instead", which you then draft as the consolation artifact) / **defer** (named evidence threshold that reopens it). The queue is public; verdicts are announced; a declined requisition with a better consolation artifact is a *good* outcome, not a rejection.
 
 ---
 
 ## Results block — every launch trains the next version
 
-*(Cadre appends: agent, launch date, first-run verdict, defects in first 2 weeks, amendments made, lesson folded into v(n+1). Never delete rows.)*
+*(Cos appends: agent, launch date, first-run verdict, defects in first 2 weeks, amendments made, lesson folded into v(n+1). Never delete rows.)*
 
 | Agent | Launched | First-run verdict | 2-week defects | Lesson |
 |---|---|---|---|---|

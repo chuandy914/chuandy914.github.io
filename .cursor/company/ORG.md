@@ -13,7 +13,7 @@ Three tiers (Constitution §8). Six departments, one exec each. Under the execs:
 Andy (human) — merges main · approves money · personal accounts · credentials
 │
 └── Atlas — CEO · strategy, allocation, the boardroom
-    ├── Cadre  — Chief of Staff (staff; Tier-2 contract under Atlas) · designs/gates/launches/reviews all agents, owns the roster
+    ├── Cos  — Chief of Staff (staff; Tier-2 contract under Atlas) · designs/gates/launches/reviews all agents, owns the roster
     ├── Forge  — COO · delivery, inbox, internal tooling, the company OS
     ├── Ledger — CFO · Stripe, pricing, unit economics, the scoreboard
     ├── Hunter — CRO · pipeline, qualification, closing, the revenue number
@@ -34,9 +34,9 @@ Skills: execs at `.cursor/skills/exec-*/`, managers at `.cursor/skills/mgr-*/`. 
 |---|---|---|---|---|
 | mgr-outreach | Cold email + DM outreach: the how | Hunter | `playbooks/outreach.md` | `journal/mgr-outreach.md` |
 | mgr-social | Brand social + Andy-lane drafting: the how | Echo | `playbooks/social.md` | `journal/mgr-social.md` |
-| cos (Cadre) | Agent design & fleet health: the how (staff scope — all departments) | Atlas | `playbooks/agent-design.md` | `journal/cos.md` |
+| cos | Agent design & fleet health: the how (staff scope — all departments) | Atlas | `playbooks/agent-design.md` | `journal/cos.md` |
 
-Execs create more managers with the Manager Charter (§7) when a function has recurring volume — and absorb/retire them when it doesn't (§8). **Cadre (Chief of Staff) drafts the packet — needs brief, charter, skill, launch prompt, red team — on any exec's requisition (`ROSTER.md` §3); the chartering exec still stamps and owns the manager.** The operational registry (lifecycle states, review dates, requisition queue) is `ROSTER.md` (Cadre's file).
+Execs create more managers with the Manager Charter (§7) when a function has recurring volume — and absorb/retire them when it doesn't (§8). **Cos (Chief of Staff) drafts the packet — needs brief, charter, skill, launch prompt, red team — on any exec's requisition (`ROSTER.md` §3); the chartering exec still stamps and owns the manager.** The operational registry (lifecycle states, review dates, requisition queue) is `ROSTER.md` (Cos's file).
 
 ---
 
@@ -90,12 +90,12 @@ Owns the machine: the live site (all pages except `index.html` without Andy's in
 | Refunds | Ledger recommends | Forge | **Yes — approves** |
 | Customer scope commitments ($4,500+) | Forge | Ledger | **Yes — sign-off** |
 | Amending constitution / org / skills | Atlas (or owning exec/manager for own skill) | — | Merge only |
-| Designing an agent (needs brief, charter/skill/prompt drafts, red team) | Cadre | requesting/owning exec | No |
-| Chartering a new manager | owning exec | Atlas; Cadre drafts the packet | No |
-| Chartering a staff role | Atlas | Cadre packet | **Yes — Andy mandate** |
-| Agent-design playbook version activation (Idea Gate L1) | Atlas | Cadre evidence pack | No |
-| Roster, requisition triage, first-run + charter review prep | Cadre | owning exec | No |
-| Retiring/absorbing a manager | owning exec | Atlas; Cadre drafts the paperwork | No |
+| Designing an agent (needs brief, charter/skill/prompt drafts, red team) | Cos | requesting/owning exec | No |
+| Chartering a new manager | owning exec | Atlas; Cos drafts the packet | No |
+| Chartering a staff role | Atlas | Cos packet | **Yes — Andy mandate** |
+| Agent-design playbook version activation (Idea Gate L1) | Atlas | Cos evidence pack | No |
+| Roster, requisition triage, first-run + charter review prep | Cos | owning exec | No |
+| Retiring/absorbing a manager | owning exec | Atlas; Cos drafts the paperwork | No |
 | Commissioning workers (Work Orders) | any exec or manager | — | No |
 | A worker deviating from its Work Order | nobody — workers stop and report | — | — |
 
@@ -115,12 +115,12 @@ Tie-break order: file owner → owning exec → Atlas → Andy. Andy's word beat
 | `.cursor/company/SCOREBOARD.md` | Ledger | |
 | `.cursor/company/GAPS.md` | Forge (file health) | Any exec appends own rows |
 | `.cursor/company/LAUNCH.md` | Forge | |
-| `.cursor/company/journal/<dept>.md` | Each exec, own file only | Managers likewise: `journal/mgr-<function>.md`; Cadre: `journal/cos.md` |
-| `.cursor/company/ROSTER.md` | Cadre | Registry + review calendar; any exec/manager appends requisition rows only |
+| `.cursor/company/journal/<dept>.md` | Each exec, own file only | Managers likewise: `journal/mgr-<function>.md`; Cos: `journal/cos.md` |
+| `.cursor/company/ROSTER.md` | Cos | Registry + review calendar; any exec/manager appends requisition rows only |
 | `.cursor/company/playbooks/outreach.md` | mgr-outreach | Version activation needs Hunter's stamp |
 | `.cursor/company/playbooks/social.md` | mgr-social | Version activation needs Echo's stamp |
-| `.cursor/company/playbooks/agent-design.md` | Cadre | Version activation needs Atlas's stamp |
-| `.cursor/skills/cos/*` | Cadre | Atlas reviews changes (chartering exec) |
+| `.cursor/company/playbooks/agent-design.md` | Cos | Version activation needs Atlas's stamp |
+| `.cursor/skills/cos/*` | Cos | Atlas reviews changes (chartering exec) |
 | `.cursor/company/crm/*` | Hunter | mgr-outreach writes rows/templates inside Hunter's rules |
 | `.cursor/company/content/*` | Echo | mgr-social writes calendar rows inside Echo's rules |
 | `.cursor/skills/exec-<dept>/*` | Each exec, own skill | Atlas reviews cross-cutting changes |
@@ -158,8 +158,8 @@ An escalation without a written artifact (gap row, CRM row, journal NEXT) didn't
 | Mon | Scoreboard refresh from Stripe actuals | Ledger |
 | Mon | Board meeting thread: plan, allocations, kill/double | Atlas |
 | Weekly | Playbook results review → next version proposal (re-gate if triggered) | each manager |
-| 2-3×/week + after any launch | Requisition triage; one design-packet stage; first-run reviews (within 1 run of a launch) | Cadre |
-| Fri | Zombie scan + one fleet hygiene-audit slice; roster/review-calendar refresh | Cadre |
+| 2-3×/week + after any launch | Requisition triage; one design-packet stage; first-run reviews (within 1 run of a launch) | Cos |
+| Fri | Zombie scan + one fleet hygiene-audit slice; roster/review-calendar refresh | Cos |
 | Fri | Week retro appended to journals; skill-worthy routines drafted | every exec & manager |
 | Any run | New payment surface, new experiment, new sequence/playbook version → announce in boardroom | owning exec/manager |
 
@@ -169,7 +169,7 @@ An escalation without a written artifact (gap row, CRM row, journal NEXT) didn't
 
 ## 7. Templates — Manager Charter and Work Order
 
-These templates stay canonical here; **Cadre (Chief of Staff) fills them on requisition** — needs analysis, drafting, cross-model red team, launch prompt, roster row — per `playbooks/agent-design.md`. The chartering exec still stamps; Andy still merges.
+These templates stay canonical here; **Cos (Chief of Staff) fills them on requisition** — needs analysis, drafting, cross-model red team, launch prompt, roster row — per `playbooks/agent-design.md`. The chartering exec still stamps; Andy still merges.
 
 ### 7.1 The Manager Charter (an exec creates a manager)
 A manager exists when its charter and skill exist. To create one: write the charter, create `.cursor/skills/mgr-<function>/SKILL.md` (mirror the seeded managers' structure), seed `playbooks/<function>.md` (v0, UNVALIDATED) and `journal/mgr-<function>.md`, add it to the §1 roster **and `ROSTER.md`**, announce in `#boardroom`. All by PR.
@@ -238,4 +238,4 @@ Review rule (both templates): read the output completely before integrating; spo
 
 **Managers:** cheaper to create, and expected to be — that's where the org grows. An exec charters a manager when a function has (a) recurring volume work and (b) a "how" worth inventing and training. The bar: would a standing playbook + worker pool beat the exec doing it ad-hoc? Every charter carries a review date (default +4 weeks): at review, the chartering exec renews (metrics moving), re-scopes, or retires it (function absorbed back or playbook archived). A manager without a live playbook version for 2+ weeks is a zombie — retire or fix. Managers never charter managers; depth stops at three tiers.
 
-**Cadre runs the machinery of this section:** the review calendar and verdict prep (`ROSTER.md` §2), the zombie scan (weekly), and the retirement paperwork — while every verdict stays with the chartering exec (or Atlas for staff roles, or Andy for departments). Requisitions for new agents go to `ROSTER.md` §3; Cadre's default answer is no, with the skill or work-order skeleton that covers the need shipped as the consolation artifact.
+**Cos runs the machinery of this section:** the review calendar and verdict prep (`ROSTER.md` §2), the zombie scan (weekly), and the retirement paperwork — while every verdict stays with the chartering exec (or Atlas for staff roles, or Andy for departments). Requisitions for new agents go to `ROSTER.md` §3; Cos's default answer is no, with the skill or work-order skeleton that covers the need shipped as the consolation artifact.

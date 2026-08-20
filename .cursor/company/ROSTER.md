@@ -1,8 +1,8 @@
 # ROSTER — every persistent agent, its grade, and its review date
 
-**Owner:** Cadre (Chief of Staff). Any exec/manager appends requisition rows (§3); only Cadre edits the registry.
+**Owner:** Cos (Chief of Staff). Any exec/manager appends requisition rows (§3); only Cos edits the registry.
 **Scope:** persistent agents only (Tiers 1–2 + staff). Workers are never rostered — they are disposable by law (Constitution §8.3).
-**Law:** `ORG.md` stays canonical for structure and decision rights; this file is the operational registry — lifecycle states, review dates, and the requisition queue. A roster row that doesn't match reality is a Cadre KPI defect.
+**Law:** `ORG.md` stays canonical for structure and decision rights; this file is the operational registry — lifecycle states, review dates, and the requisition queue. A roster row that doesn't match reality is a Cos KPI defect.
 
 **Lifecycle states:** `DESIGN` (packet in progress) → `GATED` (red-teamed + exec-stamped, awaiting merge/launch) → `LIVE` → `RETIRED` (archived, never deleted). `HALTED` = launch pulled pending redesign.
 
@@ -25,7 +25,7 @@
 
 | Agent | Role | Skill | Journal | Playbook | Chartered | Review due | Status | Graded on |
 |---|---|---|---|---|---|---|---|---|
-| Cadre | Chief of Staff | `.cursor/skills/cos/` | `journal/cos.md` | `playbooks/agent-design.md` | 2026-08-20 (Andy mandate) | 2026-09-17 | GATED — LIVE on merge | Time-to-live ≤3 runs, first-run artifact rate 100%, zombies 0 |
+| Cos | Chief of Staff | `.cursor/skills/cos/` | `journal/cos.md` | `playbooks/agent-design.md` | 2026-08-20 (Andy mandate) | 2026-09-17 | GATED — LIVE on merge | Time-to-live ≤3 runs, first-run artifact rate 100%, zombies 0 |
 
 ### Tier 2 — Managers
 
@@ -36,21 +36,21 @@
 
 ---
 
-## 2. Review calendar (Cadre maintains; next due first)
+## 2. Review calendar (Cos maintains; next due first)
 
 | Date | Review | Owner of verdict |
 |---|---|---|
-| within 1 Cadre run of launch | First-run review — every newly launched agent (playbook §8) | Cadre |
-| 2026-09-17 | Charter review: mgr-outreach | Hunter (Cadre prepares) |
-| 2026-09-17 | Charter review: mgr-social | Echo (Cadre prepares) |
-| 2026-09-17 | Charter review: Cadre | Atlas |
-| weekly (Fri) | Zombie scan + one hygiene-audit slice | Cadre |
+| within 1 Cos run of launch | First-run review — every newly launched agent (playbook §8) | Cos |
+| 2026-09-17 | Charter review: mgr-outreach | Hunter (Cos prepares) |
+| 2026-09-17 | Charter review: mgr-social | Echo (Cos prepares) |
+| 2026-09-17 | Charter review: Cos | Atlas |
+| weekly (Fri) | Zombie scan + one hygiene-audit slice | Cos |
 
 ---
 
 ## 3. Requisitions — ask for an agent here
 
-Append a row; Cadre triages within two of its runs (playbook §10). Verdicts are announced in `#boardroom`. A decline usually ships with a consolation artifact (the skill or work-order skeleton that covers the need without headcount).
+Append a row; Cos triages within two of its runs (playbook §10). Verdicts are announced in `#boardroom`. A decline usually ships with a consolation artifact (the skill or work-order skeleton that covers the need without headcount).
 Status: `open` → `triaged` → `in-design (packet stage)` / `declined (verdict written)` / `launched`.
 
 | ID | From | Function / position | Outcome it would own | Evidence of recurring volume | Status | Opened |
@@ -64,4 +64,4 @@ Status: `open` → `triaged` → `in-design (packet stage)` / `declined (verdict
 | Date | Event |
 |---|---|
 | 2026-08-20 | Founding: six executives + mgr-outreach (Hunter) + mgr-social (Echo) chartered in the company-OS PR. |
-| 2026-08-20 | Cadre (Chief of Staff, staff role under Atlas) designed and chartered by Andy's direct mandate; agent-design playbook v1 drafted, gate pending Atlas (Cadre run 1). |
+| 2026-08-20 | Cos (Chief of Staff, staff role under Atlas) designed and chartered by Andy's direct mandate; agent-design playbook v1 drafted, gate pending Atlas (Cos run 1). |
