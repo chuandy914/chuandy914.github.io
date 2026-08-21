@@ -1,6 +1,6 @@
 # Social Playbook — the trained artifact
 
-**Owner:** mgr-social (Tier 2, under Echo). This file is the company's validated doctrine for HOW we post: platforms, shapes, hooks, cadence, voice enforcement, engagement ops. Nothing publishes outside an ACTIVE version (Constitution §8.4, skill `mgr-social`).
+**Owner:** mgr-social (Tier 2, under Echo). This file is the company's validated doctrine for HOW we post: platforms, shapes, hooks, cadence, voice enforcement, engagement ops. Nothing publishes outside an ACTIVE version (Constitution §8.4, skill `mgr-social`) — Andy-lane drafts included. ACTIVE inherit only; a new venue, audience, format, or claim re-runs §3.6.
 
 **Version law:** identical to the outreach playbook — `DRAFT` → `IN GATE` → `ACTIVE` (Echo-stamped) → `RETIRED`; versions never deleted; results blocks are the training corpus.
 
@@ -22,7 +22,9 @@ STATUS: DRAFT (seed — carries the inherited baseline from `exec-cmo` §6 for v
 DRAFTED: 2026-08-21 by the launch run (not gated)
 RESEARCH: none — inherited doctrine, citations owed in v1
 RED TEAM: none yet
-APPROVED: nobody — brand posting from v0 is forbidden (Andy-lane drafts may flow: they're human-posted)
+APPROVED: nobody
+
+**HARD BLOCK (Constitution §3.6, Echo stamp 2026-08-21):** `RESEARCH: none` is not a receipt. No Andy-lane drafts and no brand posts until a gated version has receipts. This version stays UNVALIDATED. Do not treat human-posted as a bypass — Andy-lane is public. Do not invent a fake ACTIVE version. Do not mark this ACTIVE.
 
 ### Inherited baseline (v1 raw material)
 - **Platform doctrine:** X = brand home (agent-run once G-003 lands, X free tier 500 posts/mo budget); LinkedIn = 2 Andy-pastes/week; HN/Reddit = Andy-personal, event-driven; every venue's written rules read before first post targeting it.
